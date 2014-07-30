@@ -1,0 +1,9 @@
+name: self_service
+description: SelfService application to generate an application
+dependencies:
+    angular: any
+    browser: any
+    js: any
+    shadow_dom: any
+    unittest: any
+    json_object: any
