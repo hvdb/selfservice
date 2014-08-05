@@ -5,17 +5,17 @@ import 'dart:convert';
 import "package:json_object/json_object.dart";
 
 @Component(
-    selector: 'applications',
-    templateUrl: '../lib/components/applications/applications.html',
-    //cssUrl: 'packages/angular_dart_demo/rating/rating_component.css',
+    selector: 'applications-list',
+    templateUrl: '../lib/components/applications/applications_list.html',
+    cssUrl: '../web/css/bootstrap.min.css',
     publishAs: 'cmp')
-class Applications {
+class ApplicationsList {
 
   final Http _http;
 
   Map apps = new Map();
 
-  Applications(this._http) {
+  ApplicationsList(this._http) {
     _loadData();
   }
 

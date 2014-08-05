@@ -1,16 +1,16 @@
 import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 
-import 'package:self_service/components/applications/applications.dart';
-
+import '../lib/components/applications/applications_list.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    bind(Applications);
+    bind(ApplicationsList);
   }
 }
 
 void main() {
+  Binding.printInjectWarning = false;
   applicationFactory()
   .addModule(new MyAppModule())
   .run();
