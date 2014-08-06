@@ -1,5 +1,3 @@
-
-
 <table class="table">
     <thead>
     <tr>
@@ -12,7 +10,7 @@
     <tbody ng-repeat="application in cmp.apps">
     <tr>
         <td>{{application.id}}</td>
-        <td>{{application.name}}</td>
+        <td><a href="#/application/{{application.id}}/view">{{application.name}}</a></td>
         <td>{{application.gitConfiguration.repoUrl}}</td>
         <td>{{application.cmdbId}}</td>
     </tr>

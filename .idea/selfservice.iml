@@ -9,6 +9,8 @@
       <excludeFolder url="file://$MODULE_DIR$/web/js/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/less/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/views/applications/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/views/packages" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,8 +1,4 @@
-library recipe_book_controller;
-
-import 'package:angular/angular.dart';
-import 'dart:convert';
-import "package:json_object/json_object.dart";
+part of self_service;
 
 @Component(
     selector: 'applications-list',
@@ -23,7 +19,7 @@ class ApplicationsList {
 
     _http.get('http://localhost:9090/applications/')
     .then((HttpResponse response) {
-      print(response);
+
       apps = response.data;
 
     })

@@ -1,17 +1,14 @@
 import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
+import 'package:logging/logging.dart';
 
-import '../lib/components/applications/applications_list.dart';
+import '../lib/self_service.dart';
 
-class MyAppModule extends Module {
-  MyAppModule() {
-    bind(ApplicationsList);
-  }
-}
+
 
 void main() {
-  Binding.printInjectWarning = false;
-  applicationFactory()
-  .addModule(new MyAppModule())
-  .run();
+
+  Logger.root.level = Level.FINEST;
+  Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
+  startSelfServiceApp();
 }
