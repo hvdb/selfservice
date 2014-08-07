@@ -2,6 +2,7 @@ name: self_service
 description: SelfService application to generate an application
 dependencies:
     angular: any
+    unittest: any
     browser: any
     js: any
     shadow_dom: any
