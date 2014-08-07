@@ -12,7 +12,7 @@ void SelfServiceRouterInitializer(Router router, RouteViewFactory views) {
             replace: true)),
 
         'applications': ngRoute(path: '/applications', mount: {
-            '': ngRoute(path: '/view', view: 'views/applications/index.html'),
+            '': ngRoute(path: '/list', view: 'views/applications/index.html'),
             'add': ngRoute(path: '/add', view: 'views/applications/new.html')
         }),
         'application': ngRoute(path: '/application/:applicationId', mount: {
