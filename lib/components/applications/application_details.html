@@ -1,5 +1,8 @@
 <h1>Details van de applicatie:</h1>
 
 <div>Id: {{applicationDetails.application.id}}</div>
+<div>Type: {{applicationDetails.application.type}}</div>
 <div>Name: {{applicationDetails.application.name}}</div><br/>
-<div>Name: {{applicationDetails.application.gitConfiguration.repoUrl}}</div><br/>
+<div>Clone url: {{applicationDetails.application.gitConfiguration.repoUrl}}</div><br/>
+<div><a href="{{applicationDetails.application.gitConfiguration.browseUrl}}">Browse stash</a></div><br/>
+

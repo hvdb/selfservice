@@ -1,17 +1,14 @@
 <table class="table">
     <thead>
     <tr>
-        <th>#</th>
+        <th>Type</th>
         <th>Name</th>
-        <th>Stash Repo URL</th>
-        <th>CMDB</th>
     </tr>
     </thead>
     <tbody ng-repeat="application in cmp.apps">
     <tr>
-        <td>{{application.id}}</td>
-        <td><a href="#/application/{{application.id}}/view">{{application.name}}</a></td>
-        <td>{{application.gitConfiguration.repoUrl}}</td>
+        <td>{{application.type}}</td>
+        <td><a href="#/application/{{application.name}}/view">{{application.name}}</a></td>
     </tr>
     </tbody>
 </table>
