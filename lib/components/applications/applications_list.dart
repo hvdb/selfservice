@@ -3,31 +3,68 @@ part of self_service;
 @Component(
     selector: 'applications-list',
     templateUrl: '../lib/components/applications/applications_list.html',
-    cssUrl: '../web/css/bootstrap.min.css',
+    cssUrl: '../web/css/theguide.css',
     publishAs: 'cmp')
 class ApplicationsList {
 
   final Http _http;
 
+  String _nextQuery = 'limit=10&start=20';
+  String _previousQuery;
+
+  int _nextPageStart;
+  int _limit = 10;
+
   Map apps = new Map();
+  bool disableNext = false;
+  bool disablePrevious = true;
 
   ApplicationsList(this._http) {
-    _loadData();
+    _loadData('limit='+_limit.toString());
+
   }
 
-  void _loadData() {
+  getNextPage() {
+      _loadData(_nextQuery);
+  }
 
-    _http.get('http://localhost:9090/applications/')
+  getPreviousPage() {
+      _loadData(_previousQuery);
+  }
+
+  void _loadData(query) {
+
+    _http.get('http://localhost:9090/applications?'+query)
     .then((HttpResponse response) {
 
-      apps = response.data;
+      apps = response.data["applications"];
+
+      if (response.data["nextPageStart"] != null) {
+        _nextPageStart = response.data["nextPageStart"];
+        disableNext = false;
+      } else {
+        disableNext = true;
+      }
+
+      if (!disableNext) {
+        if (_nextPageStart - _limit == 0) {
+          disablePrevious = true;
+        } else {
+          disablePrevious = false;
+          _previousQuery = 'limit=' + _limit.toString() + '&start=' + (_nextPageStart - _limit*2).toString();
+        }
+        _nextQuery = 'limit=' + _limit.toString() + '&start=' + _nextPageStart.toString();
+      } else {
+        _previousQuery = 'limit=' + _limit.toString() + '&start=' + (_nextPageStart - _limit).toString();;
+        _nextQuery = '';
+      }
+
 
     })
     .catchError((e) {
       print(e);
 
     });
-
 
   }
 }

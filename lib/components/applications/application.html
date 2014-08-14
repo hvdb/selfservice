@@ -1,9 +1,42 @@
+<sp-notification ng-if="applications.notification != null" type="application.notificationType" >{{applications.notification}}</sp-notification>
+
 <div><strong>Hier komt het formulier voor de nieuwe/edit app.</strong></div>
+<br/>
+
+      <style>
+        input.ng-dirty.ng-invalid {
+            border: 1px red solid;
+        }
+
+      </style>
 
 
-<form ng-submit="post">
+<form name="newApplicationForm" ng-if="applications.notification == null" ng-submit="applications.createNewRepo()" >
 
-    <label for="applicationName">ApplicationName: <input id="applicationName" type="text"/></label>
+    <fieldset name="applicationFields">
+        <legend for="applicationName" class="col-lg-4 legend-label">Application name:</legend>
+        <div class="col-lg-6">
+            <input id="applicationName" name="applicationName" type="text" ng-model="applications.applicationName" ng-pattern="applications.validationPattern" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1} }"/>
+            <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-required') && newApplicationForm['applicationFields']['applicationName'].dirty">
+                Dit veld is niet verplicht.
+            </div>
 
+            <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-pattern')">
+                <span>De naam moet beginnen met een van deze letters: p,z,o,g gevolgd door een hoofdletter</span>
+            </div>
+        </div>
+    </fieldset>
+<br/>
+
+
+    <sp-notification ng-if="newApplicationForm.invalid && newApplicationForm.dirty" type="error" >Er zijn validatie meldingen.</sp-notification>
+
+
+    <input class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid"/>
 
 </form>
+
+
+
+
+

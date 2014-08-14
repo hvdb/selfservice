@@ -2,7 +2,7 @@ part of self_service;
 @Component(
     selector: 'application-details',
     templateUrl: '../lib/components/applications/application_details.html',
-    cssUrl: '../web/css/bootstrap.min.css',
+    cssUrl: '../web/css/theguide.css',
     publishAs: 'applicationDetails')
 class ApplicationDetails {
 
