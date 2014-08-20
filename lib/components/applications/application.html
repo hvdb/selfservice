@@ -1,18 +1,14 @@
-<sp-notification ng-if="applications.notification != null" type="application.notificationType" >{{applications.notification}}</sp-notification>
-
-<div><strong>Hier komt het formulier voor de nieuwe/edit app.</strong></div>
-<br/>
+<sp-notification ng-if="applications.notification != null" type="applications.notificationType" ng-bind-html="applications.notification"></sp-notification>
 
       <style>
         input.ng-dirty.ng-invalid {
             border: 1px red solid;
         }
-
       </style>
 
-
 <form name="newApplicationForm" ng-if="applications.notification == null" ng-submit="applications.createNewRepo()" >
-
+    <div><strong>Hier komt het formulier voor de nieuwe/edit app.</strong></div>
+    <br/>
     <fieldset name="applicationFields">
         <legend for="applicationName" class="col-lg-4 legend-label">Application name:</legend>
         <div class="col-lg-6">

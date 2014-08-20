@@ -26,14 +26,12 @@ class Applications {
 
   createNewRepo() {
 
-    //print(_ngModel.errorStates);
-
-     notification = 'Loading...';
+     notification = 'De module wordt nu toegevoegd, dit kan even duren.';
      notificationType = 'info';
 
     _http.post('http://localhost:9090/applications/', {"name":applicationName, "scmId":"git", "forkable":true}).then((HttpResponse response) {
 
-      notification = 'Uw module is toegevoegd';
+      notification = 'Uw module is toegevoegd, kijk voor de details :<a href="#/application/'+applicationName+'/view">hier</a>';
       notificationType = 'success';
 
     }).catchError((e) {
