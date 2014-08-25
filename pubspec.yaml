@@ -8,4 +8,4 @@ dependencies:
     shadow_dom: any
     unittest: any
     json_object: any
-
+    protactor: any

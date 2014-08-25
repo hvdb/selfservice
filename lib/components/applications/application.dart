@@ -11,6 +11,8 @@ class Applications {
   final Http _http;
 
   String applicationName;
+  String applicationName1;
+
   bool added = false;
   bool loading = false;
   bool error = false;
@@ -18,7 +20,7 @@ class Applications {
   String notification;
   String notificationType;
 
-  String validationPattern = "^[p|z|o|g][A-Z]";
+  String validationPattern = "^[p|z|o|g][A-Z][a-zA-Z]*\$";
 
   Applications(this._http, this._router) {
 
