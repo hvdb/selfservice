@@ -1,11 +1,14 @@
 name: self_service
 description: SelfService application to generate an application
 dependencies:
-    angular: any
+    angular:
+      git:
+        url: https://github.com/hvdb/angular.dart.git
+        ref: master
+
     unittest: any
     browser: any
     js: any
     shadow_dom: any
     unittest: any
     json_object: any
-    protactor: any
