@@ -4,7 +4,7 @@ dependencies:
     angular:
       git:
         url: https://github.com/hvdb/angular.dart.git
-        ref: master
+        ref: ng_message
 
     unittest: any
     browser: any
