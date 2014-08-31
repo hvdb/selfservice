@@ -1,3 +1,4 @@
+library  self_service;
 import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';

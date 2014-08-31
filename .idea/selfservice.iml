@@ -3,7 +3,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/packages/self_service" />
+      <excludeFolder url="file://$MODULE_DIR$/test/e2e/applications/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/e2e/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/unit/components/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/unit/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/css/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/fonts/eot/packages" />
@@ -30,6 +33,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="application" />
+    <orderEntry type="library" name="selfservice node_modules" level="project" />
   </component>
 </module>
 

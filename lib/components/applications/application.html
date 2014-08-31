@@ -1,4 +1,7 @@
-<sp-notification closeable ng-if="applications.notification != null" type="applications.notificationType" ng-bind-html="applications.notification" closeable="true"></sp-notification>
+
+
+
+<sp-notification ng-if="applications.notification != null" type="applications.notificationType" ng-bind-html="applications.notification" closeable="true"></sp-notification>
 
       <style>
         input.ng-dirty.ng-invalid {
@@ -9,24 +12,41 @@
 <form name="newApplicationForm" ng-if="applications.notification == null" ng-submit="applications.createNewRepo()" >
     <div><strong>Hier komt het formulier voor de nieuwe/edit app.</strong></div>
     <br/>
-    <fieldset name="applicationFields">
-        <legend for="applicationName" class="col-lg-4 legend-label">Application name:</legend>
-        <div class="col-lg-6">
+        <div name="form-input">
+            <label for="applicationName" class="col-lg-4 legend-label">Application name:</label>
+                <div class="col-lg-6">
 
-                <input id="applicationName" name="applicationName" type="text" ng-model="applications.applicationName" ng-pattern="applications.validationPattern" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1} }"/>
+                  <input id="applicationName" name="applicationName" type="text" ng-model="applications.applicationName" ng-pattern="applications.validationPattern" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1000} }"/>
 
-            <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-pattern')">
-                <span>De naam moet beginnen met een van deze letters: p,z,o,g gevolgd door een hoofdletter en er mogen geen vreemde tekens en/of cijfers in zitten.</span><br/>
-                <span><b>Voorbeeld: pApplicatieNaam</b></span>
-            </div>
-            <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-required')">
-                <span>Dit veld is verplicht.</span><br/>
-            </div>
-        </div>
-    </fieldset>
+                    <br/>
+                    <div ng-if="newApplicationForm['applicationName'].hasErrorState('ng-required') && newApplicationForm['applicationName'].dirty">
+                        Dit veld is verplicht.
+                    </div>
+
+                    <div ng-if="newApplicationForm['applicationName'].hasErrorState('ng-pattern')">
+                        <span>De naam moet beginnen met een van deze letters: p,z,o,g gevolgd door een hoofdletter</span>
+                    </div>
+
+                </div>
 <br/>
+            <br/>
+                <label for="repoAdmin" class="col-lg-4 legend-label">Repo admin</label>
+                    <div class="col-lg-6">
 
+                    <input id="repoAdmin" name="repoAdmin" type="text" ng-model="applications.repoAdmin" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1000} }"/>
 
+                    <br/>
+
+                        <div ng-if="newApplicationForm['repoAdmin'].hasErrorState('ng-required') && newApplicationForm['repoAdmin'].dirty">
+                            Dit veld is verplicht.
+                        </div>
+
+                </div>
+    </div>
+<br/>
+    <br/>
+    <br/>
+    <br/>
     <sp-notification ng-if="newApplicationForm.invalid && newApplicationForm.dirty" type="'error'">Er zijn validatie meldingen.</sp-notification>
 
 
@@ -38,3 +58,16 @@
 
 
 
+
+
+
+
+  <!--
+              <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-pattern')">
+                  <span>De naam moet beginnen met een van deze letters: p,z,o,g gevolgd door een hoofdletter en er mogen geen vreemde tekens en/of cijfers in zitten.</span><br/>
+                  <span><b>Voorbeeld: pApplicatieNaam</b></span>
+              </div>
+              <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-required')">
+                  <span>Dit veld is verplicht.</span><br/>
+              </div>
+              -->

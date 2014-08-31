@@ -4,6 +4,7 @@ part of self_service;
     selector: 'application',
     templateUrl: '../lib/components/applications/application.html',
     cssUrl: '../web/css/theguide.css',
+    useShadowDom: false,
     publishAs: 'applications')
 class Applications {
 
@@ -11,7 +12,7 @@ class Applications {
   final Http _http;
 
   String applicationName;
-  String applicationName1;
+  String repoAdmin;
 
   bool added = false;
   bool loading = false;

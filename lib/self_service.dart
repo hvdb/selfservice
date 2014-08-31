@@ -1,11 +1,8 @@
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
-import 'package:angular/animate/module.dart';
 import 'package:angular/application_factory.dart';
 import 'dart:async';
 import "package:angular/core/parser/syntax.dart";
-
-
 
 part 'components/applications/application.dart';
 part 'components/applications/application_details.dart';
