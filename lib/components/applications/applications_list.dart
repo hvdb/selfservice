@@ -1,8 +1,8 @@
-part of self_service;
+import 'package:angular/angular.dart';
 
 @Component(
     selector: 'applications-list',
-    templateUrl: '../lib/components/applications/applications_list.html',
+    templateUrl: 'packages/self_service/components/applications/applications_list.html',
     cssUrl: '../web/css/theguide.css',
     publishAs: 'cmp')
 class ApplicationsList {

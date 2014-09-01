@@ -1,8 +1,9 @@
-part of self_service;
+
+import 'package:angular/angular.dart';
 
 @Component(
     selector: 'application',
-    templateUrl: '../lib/components/applications/application.html',
+    templateUrl: 'packages/self_service/components/applications/application.html',
     cssUrl: '../web/css/theguide.css',
     useShadowDom: false,
     publishAs: 'applications')

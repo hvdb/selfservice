@@ -1,9 +1,8 @@
-part of self_service;
-
+import 'package:angular/angular.dart';
 
 @Component(
     selector: 'sp-control-group',
-    templateUrl: '../lib/components/form/control_group.html',
+    templateUrl: 'packages/self_service/components/form/control_group.html',
     cssUrl: '../web/css/theguide.css',
     publishAs: 'controlGroup')
 class ControlGroup {

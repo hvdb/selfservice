@@ -1,5 +1,4 @@
-part of  self_service;
-
+import 'package:angular/angular.dart';
 
 void SelfServiceRouterInitializer(Router router, RouteViewFactory views) {
 

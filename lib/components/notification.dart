@@ -1,9 +1,8 @@
-part of self_service;
-
+import 'package:angular/angular.dart';
 
 @Component(
     selector: 'sp-notification',
-    templateUrl: '../lib/components/notification.html',
+    templateUrl: 'packages/self_service/components/notification.html',
     cssUrl: '../web/css/theguide.css',
     publishAs: 'notification')
 class Notification {
@@ -48,7 +47,7 @@ class Notification {
       break;
       case 'success':
         iconClass = 'success';
-        color = 'gray';
+        color = 'green';
         alertClass = 'alert-success';
       break;
       case 'info':

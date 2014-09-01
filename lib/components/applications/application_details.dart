@@ -1,7 +1,9 @@
-part of self_service;
+import 'package:angular/angular.dart';
+
+
 @Component(
     selector: 'application-details',
-    templateUrl: '../lib/components/applications/application_details.html',
+    templateUrl: 'packages/self_service/components/applications/application_details.html',
     cssUrl: '../web/css/theguide.css',
     publishAs: 'applicationDetails')
 class ApplicationDetails {

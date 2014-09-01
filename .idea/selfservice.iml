@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/test/e2e/applications/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/e2e/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/unit/components/applications/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/unit/components/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/unit/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/css/packages" />

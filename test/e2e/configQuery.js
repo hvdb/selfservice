@@ -14,7 +14,7 @@ function getBaseUrl() {
     } else {
         // Default host:port when you run "pub serve" from the example
         // subdirectory of the AngularDart repo.
-        return 'http://localhost:63342';
+        return 'http://localhost:8080';
     }
 }
 

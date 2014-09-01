@@ -1,8 +1,7 @@
-part of self_service;
-
+import 'package:angular/angular.dart';
 @Component(
     selector: 'navigation-block',
-    templateUrl: '../lib/components/navigation/navigation_block.html',
+    templateUrl: 'packages/self_service/components/navigation/navigation_block.html',
     cssUrl: '../web/css/theguide.css',
     publishAs: 'navigationblock')
 class NavigationBlock {
