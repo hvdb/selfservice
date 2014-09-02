@@ -3,7 +3,7 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'sp-notification',
     templateUrl: 'packages/self_service/components/notification.html',
-    cssUrl: '../web/css/theguide.css',
+    useShadowDom: false,
     publishAs: 'notification')
 class Notification {
 

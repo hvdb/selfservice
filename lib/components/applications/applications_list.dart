@@ -3,7 +3,7 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'applications-list',
     templateUrl: 'packages/self_service/components/applications/applications_list.html',
-    cssUrl: '../web/css/theguide.css',
+    useShadowDom: false,
     publishAs: 'cmp')
 class ApplicationsList {
 

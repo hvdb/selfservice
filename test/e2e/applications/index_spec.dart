@@ -4,19 +4,22 @@ import 'package:protractor/protractor_api.dart';
 
 main() {
   describe('index page', () {
-    var nameByModel, nameByBinding;
 
     beforeEach(() {
-      protractor.getInstance().get('selfservice/web/index.html');
+      protractor.getInstance().get('index.html');
     });
 
     it('should display the subtitle', () {
-      expect(element(by.id('subTitle')).getText()).toContain('you');
+
+     var subTitle = element(by.id('subTitle'));
+      expect(subTitle.isDisplayed()).toBe(true);
+
+
     });
 
-    it('should set mustache value to initial value of model', () {
-      nameByBinding = element(by.binding('ctrl.name'));
-      expect(nameByBinding.getText()).toEqual('Hello world!');
+    it('should have the correct title', () {
+      expect(browser.getTitle()).toEqual('Buddy');
+
     });
 
   });

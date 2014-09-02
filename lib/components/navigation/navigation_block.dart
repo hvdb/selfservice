@@ -2,7 +2,7 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'navigation-block',
     templateUrl: 'packages/self_service/components/navigation/navigation_block.html',
-    cssUrl: '../web/css/theguide.css',
+    useShadowDom: false,
     publishAs: 'navigationblock')
 class NavigationBlock {
 

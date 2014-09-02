@@ -4,7 +4,6 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'application',
     templateUrl: 'packages/self_service/components/applications/application.html',
-    cssUrl: '../web/css/theguide.css',
     useShadowDom: false,
     publishAs: 'applications')
 class Applications {
