@@ -10,7 +10,7 @@ class Notification {
   String notificationType, alertClass, iconClass, color;
   bool show = true;
 
-  @NgOneWay('type')
+  @NgTwoWay('type')
   set type(String value) {
     setType(value);
   }

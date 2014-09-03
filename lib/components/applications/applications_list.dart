@@ -21,7 +21,6 @@ class ApplicationsList {
 
   ApplicationsList(this._http) {
     _loadData('limit='+_limit.toString());
-
   }
 
   getNextPage() {

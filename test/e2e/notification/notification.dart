@@ -9,13 +9,15 @@ main() {
       protractor.getInstance().get('index-e2e.html');
     });
 
-    it('should have the correct title', () {
-      expect(browser.getTitle()).toEqual('Buddy');
+    it('should display the subtitle', () {
+
+      expect(element(by.id('subTitle')).isDisplayed()).toBe(true);
+
     });
 
-    it('should have the correct navigation block', () {
-      expect(element(by.id('navigationBlock')).isDisplayed()).toBe(true);
-      expect(element(by.id('addApplication')).getText()).toBe('Add new application');
+    it('should have the correct title', () {
+      expect(browser.getTitle()).toEqual('Buddy');
+
     });
 
   });

@@ -3,7 +3,6 @@ description: SelfService application to generate an application
 dependencies:
     angular: any
     browser: any
-    web_components: any
     json_object: any
 dev_dependencies:
     unittest: any
