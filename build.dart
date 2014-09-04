@@ -15,13 +15,21 @@ void main() {
   //Make sure selenium server runs
 
 
+  //Change api url to the one of boot2docker
+
+  new File ('lib/components/applications/constants.dart').copySync('lib/components/applications/constants_backup.dart');
+  new File('constantsBoot2Docker.dart').copySync('lib/components/applications/constants.dart');
+
+
   //Run pub get
   _runProcess('Pub get', 'pub', ['get']);
+
   //run npm install
   _runProcess('Npm install', 'npm', ['install']);
 
   //Run unit tests.
   _runProcess('Unit tests','./node_modules/karma/bin/karma', ['start', 'karma-dart.conf.js', '--single-run']);
+
 
   //Run pub build
   _runProcess('Pub build', 'pub', ['build']);
@@ -37,6 +45,7 @@ void main() {
 
   //if no problems, publish docker images.
   _runProcess('Docker stop','docker', ['stop', '$dockerContainerId']);
+  new File ('lib/components/applications/constants_backup.dart').copySync('lib/components/applications/constants.dart');
   if(!error) {
 
     log.fine('ok we are going to publish the docker image!');

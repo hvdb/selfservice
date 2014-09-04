@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'constants.dart';
 
 
 @Component(
@@ -20,7 +21,7 @@ class ApplicationDetails {
 
   void _loadData(_applicationId) {
 
-    _http.get('http://192.168.59.103:8888/application/'+_applicationId)
+    _http.get('http://$api_url/application/'+_applicationId)
     .then((HttpResponse response) {
 
       application = response.data;

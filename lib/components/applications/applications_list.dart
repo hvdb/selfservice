@@ -1,4 +1,6 @@
 import 'package:angular/angular.dart';
+import 'constants.dart';
+
 
 @Component(
     selector: 'applications-list',
@@ -8,7 +10,6 @@ import 'package:angular/angular.dart';
 class ApplicationsList {
 
   final Http _http;
-
   String _nextQuery = 'limit=10&start=20';
   String _previousQuery;
 
@@ -33,7 +34,7 @@ class ApplicationsList {
 
   void _loadData(query) {
 
-    _http.get('http://192.168.59.103:8888/applications?'+query)
+    _http.get('http://$api_url/applications?'+query)
     .then((HttpResponse response) {
 
       apps = response.data["applications"];

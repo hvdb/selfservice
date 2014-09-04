@@ -1,5 +1,6 @@
 
 import 'package:angular/angular.dart';
+import 'constants.dart';
 
 @Component(
     selector: 'application',
@@ -17,14 +18,16 @@ class Applications {
 
   String validationPattern = "^[p|z|o|g][A-Z][a-zA-Z]*\$";
 
-  Applications(this._http, this._router) {}
+  Applications(this._http, this._router) {
+
+  }
 
   createNewRepo() {
 
-     notification = 'De module wordt nu toegevoegd, dit kan even duren.';
+    notification = 'De module wordt nu toegevoegd, dit kan even duren.';
      notificationType = 'info';
 
-    _http.post('http://192.168.59.103:8888/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
+    _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
 
       notification = 'Uw module is toegevoegd, kijk voor de details :<a href="#/application/'+applicationName+'/view">hier</a>';
       notificationType = 'success';

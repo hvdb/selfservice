@@ -4,7 +4,7 @@ dependencies:
     angular: any
     browser: any
     json_object: any
-    start: any
+    web_components: any
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'
