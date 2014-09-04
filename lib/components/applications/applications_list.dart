@@ -33,7 +33,7 @@ class ApplicationsList {
 
   void _loadData(query) {
 
-    _http.get('http://localhost:9090/applications?'+query)
+    _http.get('http://192.168.59.103:8888/applications?'+query)
     .then((HttpResponse response) {
 
       apps = response.data["applications"];

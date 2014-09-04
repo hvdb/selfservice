@@ -24,7 +24,7 @@ class Applications {
      notification = 'De module wordt nu toegevoegd, dit kan even duren.';
      notificationType = 'info';
 
-    _http.post('http://localhost:9090/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
+    _http.post('http://192.168.59.103:8888/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
 
       notification = 'Uw module is toegevoegd, kijk voor de details :<a href="#/application/'+applicationName+'/view">hier</a>';
       notificationType = 'success';

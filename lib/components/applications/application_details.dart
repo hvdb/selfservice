@@ -20,7 +20,7 @@ class ApplicationDetails {
 
   void _loadData(_applicationId) {
 
-    _http.get('http://localhost:9090/application/'+_applicationId)
+    _http.get('http://192.168.59.103:8888/application/'+_applicationId)
     .then((HttpResponse response) {
 
       application = response.data;

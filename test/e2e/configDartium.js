@@ -13,8 +13,8 @@
 var configQuery = require('./configQuery.js');
 
 var config = {
-    //seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
-    seleniumAddress: 'http://bl00041.nl.europe.intranet:5555/wd/hub',
+    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+    //seleniumAddress: 'http://bl00041.nl.europe.intranet:5555/wd/hub',
     specs: [
         '**/*_spec.dart'
     ],
@@ -22,22 +22,13 @@ var config = {
     splitTestsBetweenCapabilities: true,
 
     multiCapabilities: [{
-        'browserName': 'chrome'
-        //version: 'dartium',
-        //count: 4
-    },
-        {
-            'browserName': 'firefox'
-        },
-        {
-            'browserName': 'internet explorer'
-        },
-        {
-            'browserName': 'safari'
-        }
+        'browserName': 'chrome',
+        'chromeOptions': configQuery.getChromeOptions(),
+        count: 4
+    }
     ],
 
-    baseUrl: configQuery.getBaseUrl(),
+    baseUrl: 'http://blimbing.nl.europe.intranet:8080',
 
     jasmineNodeOpts: {
         isVerbose: true, // display spec names.

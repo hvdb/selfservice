@@ -14,7 +14,7 @@ function getBaseUrl() {
     } else {
         // Default host:port when you run "pub serve" from the example
         // subdirectory of the AngularDart repo.
-        return 'http://localhost:8080';
+        return 'http://blimbing.nl.europe.intranet:8080';
     }
 }
 
