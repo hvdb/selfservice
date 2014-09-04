@@ -1,4 +1,6 @@
 .idea
+.DS_Store
 packages
 build
-
+node_modules
+test_out
