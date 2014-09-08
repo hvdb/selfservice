@@ -12,15 +12,17 @@ class ApplicationDetails {
 
   final Http _http;
   var application;
+  String api_url;
 
   ApplicationDetails(RouteProvider routeProvider, this._http) {
     var _applicationId = routeProvider.parameters['applicationId'];
     _loadData(_applicationId);
 
+
   }
 
   void _loadData(_applicationId) {
-
+    api_url = Constants.getStashUrl();
     _http.get('http://$api_url/application/'+_applicationId)
     .then((HttpResponse response) {
 

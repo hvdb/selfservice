@@ -64,6 +64,10 @@ Make more e2e test.
 Make integration tests.
 (need to make docker image for api and stash)
 
+#Run docker
+
+docker run -p 8888:80 -d selfservice
+
 
 
 

@@ -28,7 +28,7 @@ var config = {
     }
     ],
 
-    baseUrl: 'http://192.168.59.103:8889',
+    baseUrl: 'http://192.168.59.103:8888',
 
     jasmineNodeOpts: {
         isVerbose: true, // display spec names.

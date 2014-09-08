@@ -5,7 +5,7 @@ import 'dart:convert';
 
 
 
-final Logger log = new Logger('Aapplications');
+final Logger log = new Logger('build');
 
 void main() {
   Logger.root.level = Level.FINEST;
@@ -18,7 +18,7 @@ void main() {
   //Change api url to the one of boot2docker
 
   new File ('lib/components/applications/constants.dart').copySync('lib/components/applications/constants_backup.dart');
-  new File('constantsBoot2Docker.dart').copySync('lib/components/applications/constants.dart');
+  new File('boot2DockerConstants.dart').copySync('lib/components/applications/constants.dart');
 
 
   //Run pub get
@@ -38,13 +38,13 @@ void main() {
   _runProcess('Docker build', 'docker', [ 'build', '-t', 'selfservice', '.']);
 
   //start docker
-  String dockerContainerId = _runProcess('Docker run', 'docker', [ 'run', '-p', '8889:80', '-d', 'selfservice'], docker:true);
+  String dockerContainerId = _runProcess('Docker run', 'docker', [ 'run', '-p', '8888:80', '-d', 'selfservice'], docker:true);
 
   //Run protractor
   bool error = _runProcess('Protractor tests', './node_modules/.bin/protractor_dart', [ 'test/e2e/configDocker.js'], protractor:true);
 
   //if no problems, publish docker images.
-  _runProcess('Docker stop','docker', ['stop', '$dockerContainerId']);
+//  _runProcess('Docker stop','docker', ['stop', '$dockerContainerId']);
   new File ('lib/components/applications/constants_backup.dart').copySync('lib/components/applications/constants.dart');
   if(!error) {
 
@@ -59,7 +59,7 @@ void main() {
 }
 
 
-_runProcess(String process, String processCommand, List<String> processCommandAttributes,{docker:false, protractor:false}) {
+_runProcess(String process, String processCommand, List<String> processCommandAttributes,{bool docker:false, bool protractor:false}) {
   log.fine('Running $process');
   ProcessResult res = Process.runSync(processCommand, processCommandAttributes);
   log.fine('$process results');

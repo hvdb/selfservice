@@ -14,7 +14,6 @@ import 'package:self_service/components/notification.dart';
 
 import 'package:self_service/self_service_route_initializer.dart';
 
-
 class SelfServiceApp extends Module {
   SelfServiceApp() {
     bind(ApplicationsList);

@@ -11,7 +11,7 @@ class ApplicationsList {
 
   final Http _http;
   String _nextQuery = 'limit=10&start=20';
-  String _previousQuery;
+  String _previousQuery, _api_url;
 
   int _nextPageStart;
   int _limit = 10;
@@ -21,7 +21,8 @@ class ApplicationsList {
   bool disablePrevious = true;
 
   ApplicationsList(this._http) {
-    _loadData('limit='+_limit.toString());
+    _loadData('limit=$_limit');
+
   }
 
   getNextPage() {
@@ -33,8 +34,8 @@ class ApplicationsList {
   }
 
   void _loadData(query) {
-
-    _http.get('http://$api_url/applications?'+query)
+    _api_url = Constants.getStashUrl();
+    _http.get('http://$_api_url/applications?'+query)
     .then((HttpResponse response) {
 
       apps = response.data["applications"];
@@ -51,11 +52,16 @@ class ApplicationsList {
           disablePrevious = true;
         } else {
           disablePrevious = false;
-          _previousQuery = 'limit=' + _limit.toString() + '&start=' + (_nextPageStart - _limit*2).toString();
+          _previousQuery = 'limit=$_limit&start=' + (_nextPageStart - _limit*2).toString();
         }
-        _nextQuery = 'limit=' + _limit.toString() + '&start=' + _nextPageStart.toString();
+        _nextQuery = 'limit=$_limit&start=' + _nextPageStart.toString();
       } else {
-        _previousQuery = 'limit=' + _limit.toString() + '&start=' + (_nextPageStart - _limit).toString();;
+        if (_nextPageStart != null) {
+          _previousQuery = 'limit=$_limit&start=' + (_nextPageStart - _limit).toString();;
+        } else {
+          disablePrevious = true;
+        }
+
         _nextQuery = '';
       }
 

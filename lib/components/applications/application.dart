@@ -12,11 +12,12 @@ class Applications {
   Router _router;
   final Http _http;
 
-  String applicationName, repoAdmin, notification, notificationType;
+  String applicationName, repoAdmin, notification, notificationType, api_url;
 
   bool added, loading, error = false;
 
   String validationPattern = "^[p|z|o|g][A-Z][a-zA-Z]*\$";
+
 
   Applications(this._http, this._router) {
 
@@ -24,8 +25,9 @@ class Applications {
 
   createNewRepo() {
 
+    api_url = Constants.getStashUrl();
     notification = 'De module wordt nu toegevoegd, dit kan even duren.';
-     notificationType = 'info';
+    notificationType = 'info';
 
     _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
 
