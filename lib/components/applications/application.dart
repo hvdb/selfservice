@@ -19,9 +19,7 @@ class Applications {
   String validationPattern = "^[p|z|o|g][A-Z][a-zA-Z]*\$";
 
 
-  Applications(this._http, this._router) {
-
-  }
+  Applications(this._http, this._router) {}
 
   createNewRepo() {
 

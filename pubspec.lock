@@ -40,7 +40,7 @@ packages:
   guinness:
     description: guinness
     source: hosted
-    version: "0.1.14"
+    version: "0.1.15"
   html5lib:
     description: html5lib
     source: hosted

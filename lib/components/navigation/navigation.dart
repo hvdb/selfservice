@@ -6,4 +6,20 @@ import 'package:angular/angular.dart';
     publishAs: 'navigation')
 class Navigation {
 
+  Router _router;
+
+  Navigation(this._router) {
+    print('bla ' +_router.activePath.toString());
+
+  }
+
+
+  clicked(String route) {
+    print('bla ' +_router.activePath.toString());
+    _router.go(route ,{});
+  }
+
+
+
+
 }

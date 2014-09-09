@@ -11,6 +11,9 @@ import 'package:self_service/components/applications/applications_list.dart';
 import 'package:self_service/components/navigation/navigation_block.dart';
 import 'package:self_service/components/navigation/navigation.dart';
 import 'package:self_service/components/notification.dart';
+import 'package:self_service/components/authentication/authentication.dart';
+import 'package:self_service/services/authentication.dart';
+
 
 import 'package:self_service/self_service_route_initializer.dart';
 
@@ -22,7 +25,9 @@ class SelfServiceApp extends Module {
     bind(NavigationBlock);
     bind(Navigation);
     bind(Notification);
-    bind(RouteInitializerFn, toValue: SelfServiceRouterInitializer);
+    bind(Authentication);
+    bind(AuthenticationService);
+    bind(RouteInitializerFn, toImplementation: SelfServiceRouterInitializer);
     bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));
 
   }

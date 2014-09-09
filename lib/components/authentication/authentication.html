@@ -1,0 +1,58 @@
+<sp-notification id="statusNotification" ng-if="auth.notification != null" type="auth.notificationType"  closeable="true"><span ng-bind-html="auth.notification"></span></sp-notification>
+
+<form id="loginForm" name="loginForm" ng-if="auth.notification == null" ng-submit="auth.login()" >
+    <div><h4>Login form</h4></div>
+    <br/>
+        <div name="form-input">
+            <label id="usernameLabel" for="username" class="col-lg-4 legend-label">User name:</label>
+                <div class="col-lg-6">
+
+                  <input id="username" name="username" type="text" ng-model="auth.username"  ng-required="true" />
+
+                    <br/>
+                    <div id="usernameRequiredMessage" ng-if="loginForm['username'].hasErrorState('ng-required') && loginForm['username'].dirty">
+                        Dit veld is verplicht.
+                    </div>
+
+                </div>
+            <br/>
+            <br/>
+                <label id="passwordLabel" for="password" class="col-lg-4 legend-label">Password</label>
+                    <div class="col-lg-6">
+                    <input id="password" name="password" type="password" ng-model="auth.password" ng-required="true"  />
+                    <br/>
+
+                        <div id="passwordRequiredMessage" ng-if="loginForm['password'].hasErrorState('ng-required') && loginForm['password'].dirty">
+                            Dit veld is verplicht.
+                        </div>
+
+                </div>
+    </div>
+<br/>
+    <br/>
+    <br/>
+    <br/>
+    <sp-notification id="formValidationMessages" ng-if="loginForm.invalid && loginForm.dirty" type="'error'">Er zijn validatie meldingen.</sp-notification>
+
+
+    <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="loginForm.invalid"/>
+
+</form>
+
+
+
+
+
+
+
+
+
+  <!--
+              <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-pattern')">
+                  <span>De naam moet beginnen met een van deze letters: p,z,o,g gevolgd door een hoofdletter en er mogen geen vreemde tekens en/of cijfers in zitten.</span><br/>
+                  <span><b>Voorbeeld: pApplicatieNaam</b></span>
+              </div>
+              <div ng-if="newApplicationForm['applicationFields']['applicationName'].hasErrorState('ng-required')">
+                  <span>Dit veld is verplicht.</span><br/>
+              </div>
+              -->

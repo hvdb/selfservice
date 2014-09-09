@@ -27,9 +27,7 @@
             <br/>
                 <label id="repoAdminLabel" for="repoAdmin" class="col-lg-4 legend-label">Repo admin</label>
                     <div class="col-lg-6">
-
                     <input id="repoAdmin" name="repoAdmin" type="text" ng-model="applications.repoAdmin" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1000} }"/>
-
                     <br/>
 
                         <div id="repoAdminRequiredMessage" ng-if="newApplicationForm['repoAdmin'].hasErrorState('ng-required') && newApplicationForm['repoAdmin'].dirty">
