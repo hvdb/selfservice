@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/packages/self_service" />
       <excludeFolder url="file://$MODULE_DIR$/test/e2e/applications/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/test/e2e/notification/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/e2e/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/unit/components/applications/packages" />

@@ -19,8 +19,10 @@ class SelfServiceRouterInitializer {
         'notallowed': customNgRoute(path: '/notallowed', view: 'views/security/notallowed.html', neededUserLevel:-1),
         'login': customNgRoute(path: '/login', view: 'views/security/login.html', neededUserLevel:-1),
         'logout': customNgRoute(path: '/logout', view: 'views/security/logout.html', neededUserLevel:-1),
-        'applications-list': customNgRoute(path: '/applications/list', view: 'views/applications/index.html', neededUserLevel: 1),
-        'applications-add': customNgRoute(path: '/applications/add', view: 'views/applications/new.html', neededUserLevel: 2),
+        'applications': customNgRoute(path: '/applications', mount: {
+            'list': customNgRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
+            'add': customNgRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 2)
+        }, neededUserLevel: 1),
         'application': customNgRoute(path: '/application/:applicationId', mount: {
             'view': customNgRoute(path: '/view', view: 'views/applications/view.html'),
             'edit': customNgRoute(path: '/edit', view: 'views/applications/edit.html')

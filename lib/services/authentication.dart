@@ -1,5 +1,7 @@
 library selfservice_authentication;
+import 'package:angular/angular.dart';
 
+@Injectable()
 class AuthenticationService {
 
   bool loggedIn = false;
