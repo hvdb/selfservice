@@ -22,7 +22,7 @@ class SelfServiceApp extends Module {
     bind(ApplicationsList);
     bind(Applications);
     bind(ApplicationDetails);
-    bind(NavigationBlock);
+    bind(NavigationBlockComponent);
     bind(Navigation);
     bind(Notification);
     bind(Authentication);

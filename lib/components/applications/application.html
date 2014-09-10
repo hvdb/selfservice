@@ -4,13 +4,13 @@
 <sp-notification id="statusNotification" ng-if="applications.notification != null" type="applications.notificationType"  closeable="true"><span ng-bind-html="applications.notification"></span></sp-notification>
 
 <form id="newApplicationForm" name="newApplicationForm" ng-if="applications.notification == null" ng-submit="applications.createNewRepo()" >
-    <div><strong>Vul hier de gegevens in van de nieuwe module. Repoadmin moet een bekende corp key zijn in stash.</strong></div>
+    <div><strong>Vul hier de gegevens in van de nieuwe module. <b>Repo admin</b> moet een bekende corp key zijn in stash.</strong></div>
     <br/>
         <div name="form-input">
             <label id="applicationNameLabel" for="applicationName" class="col-lg-4 legend-label">Application name:</label>
-                <div class="col-lg-6">
+                <div class="col-lg-8">
 
-                  <input id="applicationName" name="applicationName" type="text" ng-model="applications.applicationName" ng-pattern="applications.validationPattern" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 0, 'blur': 1000} }"/>
+                  <input id="applicationName" name="applicationName" type="text" ng-model="applications.applicationName" ng-pattern="applications.validationPattern" ng-required="true" />
 
                     <br/>
                     <div id="applicationNameRequiredMessage" ng-if="newApplicationForm['applicationName'].hasErrorState('ng-required') && newApplicationForm['applicationName'].dirty">
@@ -23,11 +23,11 @@
                     </div>
 
                 </div>
-<br/>
+            <br/>
             <br/>
                 <label id="repoAdminLabel" for="repoAdmin" class="col-lg-4 legend-label">Repo admin</label>
-                    <div class="col-lg-6">
-                    <input id="repoAdmin" name="repoAdmin" type="text" ng-model="applications.repoAdmin" ng-required="true"  ng-model-options="{ updateOn: 'blur', debounce: {'default': 50, 'blur': 1000} }"/>
+                    <div class="col-lg-8">
+                    <input id="repoAdmin" name="repoAdmin" type="text" ng-model="applications.repoAdmin" ng-required="true"/>
                     <br/>
 
                         <div id="repoAdminRequiredMessage" ng-if="newApplicationForm['repoAdmin'].hasErrorState('ng-required') && newApplicationForm['repoAdmin'].dirty">
@@ -40,8 +40,8 @@
     <br/>
     <br/>
     <br/>
-    <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && newApplicationForm.dirty" type="'error'">Er zijn validatie meldingen.</sp-notification>
-
+    <br/>
+    <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && (newApplicationForm['applicationName'].dirty &&newApplicationForm['repoAdmin'].dirty)" type="'error'">Er zijn validatie meldingen.</sp-notification>
 
     <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid"/>
 

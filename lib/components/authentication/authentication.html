@@ -1,4 +1,4 @@
-<sp-notification id="statusNotification" ng-if="auth.notification != null" type="auth.notificationType"  closeable="true"><span ng-bind-html="auth.notification"></span></sp-notification>
+<sp-notification id="statusNotification" ng-if="auth.notification != null"><span ng-bind-html="auth.notification"></span></sp-notification>
 
 <form id="loginForm" name="loginForm" ng-if="auth.notification == null" ng-submit="auth.login()" >
     <div><h4>Login form</h4></div>
@@ -6,14 +6,11 @@
         <div name="form-input">
             <label id="usernameLabel" for="username" class="col-lg-4 legend-label">User name:</label>
                 <div class="col-lg-6">
-
-                  <input id="username" name="username" type="text" ng-model="auth.username"  ng-required="true" />
-
+                  <input id="username" name="username" type="text" ng-model="auth.username" ng-required="true" />
                     <br/>
-                    <div id="usernameRequiredMessage" ng-if="loginForm['username'].hasErrorState('ng-required') && loginForm['username'].dirty">
-                        Dit veld is verplicht.
+                    <div id="usernameRequiredMessage" >
+                        <span ng-if="loginForm['username'].hasErrorState('ng-required') && loginForm['username'].dirty">Dit veld is verplicht.</span>
                     </div>
-
                 </div>
             <br/>
             <br/>
@@ -21,18 +18,15 @@
                     <div class="col-lg-6">
                     <input id="password" name="password" type="password" ng-model="auth.password" ng-required="true"  />
                     <br/>
-
-                        <div id="passwordRequiredMessage" ng-if="loginForm['password'].hasErrorState('ng-required') && loginForm['password'].dirty">
-                            Dit veld is verplicht.
+                        <div id="passwordRequiredMessage" >
+                            <span ng-if="loginForm['password'].hasErrorState('ng-required') && loginForm['password'].dirty">Dit veld is verplicht.</span>
                         </div>
-
                 </div>
     </div>
-<br/>
     <br/>
     <br/>
     <br/>
-    <sp-notification id="formValidationMessages" ng-if="loginForm.invalid && loginForm.dirty" type="'error'">Er zijn validatie meldingen.</sp-notification>
+    <sp-notification id="formValidationMessages" ng-if="loginForm.invalid && (loginForm['password'].dirty && loginForm['username'].dirty)" type="'error'">Er zijn validatie meldingen.</sp-notification>
 
 
     <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="loginForm.invalid"/>
