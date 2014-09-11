@@ -4,7 +4,7 @@
 
 
 FROM nginx
-MAINTAINER Henk vd Brink <hendrik.van.den.brink@ing.nl>
+MAINTAINER Henk vd Brink <henvandenbrink@gmail.com>
 
 ADD build/web /usr/local/nginx/html
 ADD web/main.dart /usr/local/nginx/html/main.dart
