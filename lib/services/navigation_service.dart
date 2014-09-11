@@ -36,13 +36,13 @@ class NavigationService  {
       parent.title = activePath;
       parent.active = true;
       parents.add(parent);
+
       List<NavigationBlockItem> items = new List<NavigationBlockItem>();
-
       if (config.mount.isNotEmpty) {
-
         for (var key in config.mount.keys) {
           SpRouteCfg child = config.mount[key];
-          items.add(new NavigationBlockItem(key,parent.title+'-'+key,child.path,child.defaultRoute,child.neededUserLevel));
+
+          items.add(new NavigationBlockItem(key,parent.title+'-'+key, '#'+config.path+child.path,false,child.neededUserLevel));
         }
 
       }
