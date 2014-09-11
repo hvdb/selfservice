@@ -1,35 +1,51 @@
 import 'package:angular/angular.dart';
 import 'package:self_service/components/navigation/navigation_block.dart';
 import 'package:self_service/services/authentication.dart';
-
+import 'package:self_service/services/routing_service.dart';
 @Injectable()
 class NavigationService  {
+  Router _router;
 
   AuthenticationService _authService;
-
-  NavigationService(this._authService){}
+  RoutingService _routingConfig;
+  NavigationService(this._authService, this._router, this._routingConfig){}
 
 
   NavigationBlock getConfig() {
 
-    NavigationBlock navBlock = new NavigationBlock();
+      NavigationBlock navBlock = new NavigationBlock();
 
-      navBlock.title = 'Administration';
-      navBlock.id = 'administration';
+      Map<String, SpRouteCfg> routeConfig = _routingConfig.getViewsConfig();
+      int userLevel = _routingConfig.getViewsConfig()['root'].neededUserLevel;
+
+
+      //Determine the current route.
+      SpRouteCfg config;
+      String activePath;
+      if (_router.activePath.isNotEmpty) {
+        activePath = _router.activePath[0].name;
+        config = routeConfig[activePath];
+
+        navBlock.title = config.sectionName;
+        navBlock.id = config.sectionName;
+      }
 
       NavigationBlockParent parent = new NavigationBlockParent();
       List<NavigationBlockParent> parents = new List<NavigationBlockParent>();
 
-      parent.title = 'Application';
+      parent.title = activePath;
       parent.active = true;
-
       parents.add(parent);
-
       List<NavigationBlockItem> items = new List<NavigationBlockItem>();
 
-      items.add(new NavigationBlockItem('list','List of Applications','#/applications/list',false,1));
-    items.add(new NavigationBlockItem('add','Add a new applications','#/applications/add',false,1));
+      if (config.mount.isNotEmpty) {
 
+        for (var key in config.mount.keys) {
+          SpRouteCfg child = config.mount[key];
+          items.add(new NavigationBlockItem(key,parent.title+'-'+key,child.path,child.defaultRoute,child.neededUserLevel));
+        }
+
+      }
 
       parent.items = items;
       navBlock.parents = parents;

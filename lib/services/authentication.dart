@@ -22,6 +22,21 @@ class AuthenticationService {
 
   }
 
+  bool logIn(String username, String password){
+    if (username == 'henk' && password == 'henk') {
+      loggedIn = true;
+      loggedInUserLevel = 99;
+      return true;
+    }
+    return false;
+  }
+
+
+  void logOut() {
+    loggedIn = false;
+    loggedInUserLevel = 0;
+  }
+
   bool _handleLoggedInClient(int neededUserLevel) {
     print('neededuserlevel test $neededUserLevel');
 

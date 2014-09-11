@@ -8,8 +8,8 @@ import 'package:self_service/services/authentication.dart';
 class Authentication {
 
   AuthenticationService _authService;
-
-  Authentication(this._authService) {}
+  Router _router;
+  Authentication(this._authService, this._router) {}
 
   String username, password, notification;
 
@@ -18,18 +18,18 @@ class Authentication {
   set logout(bool value) {
     if (value) {
       notification = 'U bent uitgelogd.';
-      _authService.loggedIn = false;
-      _authService.loggedInUserLevel = 0;
+
+      _authService.logOut();
+
     }
   }
 
   login() {
-    if (username == 'henk' && password == 'henk') {
-      _authService.loggedIn = true;
-      _authService.loggedInUserLevel = 99;
+    if (_authService.logIn(username,password)) {
       notification = 'U bent ingelogd.';
+      _router.go('root',{});
     } else {
-      //Fout.
+      notification = 'Invalid credentials.';
     }
 
   }

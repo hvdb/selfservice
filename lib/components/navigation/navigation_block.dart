@@ -36,7 +36,11 @@ class NavigationBlockComponent {
   NavigationService _navigationConfig;
   NavigationBlock config;
 
-  NavigationBlockComponent(this._navigationConfig) {
+  Router _router;
+
+
+
+  NavigationBlockComponent(this._navigationConfig, this._router) {
     config = _navigationConfig.getConfig();
   }
 
