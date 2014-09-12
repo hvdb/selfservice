@@ -43,6 +43,9 @@ module.exports = function(config) {
         plugins: [
             'karma-dart',
             'karma-chrome-launcher',
+            'karma-sauce-launcher',
+            'karma-firefox-launcher',
+            'karma-script-launcher',
             'karma-junit-reporter'
 
         ],
