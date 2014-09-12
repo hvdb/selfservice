@@ -70,6 +70,7 @@ docker run -p 8888:80 -d selfservice
 
 
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/henkvandenbrink.svg)](https://saucelabs.com/u/henkvandenbrink)
 
 
 [ ![Codeship Status for hvdb/selfservice](https://www.codeship.io/projects/fad7b5a0-fa3f-0131-9eeb-3aac33d676db/status)](https://www.codeship.io/projects/29029)

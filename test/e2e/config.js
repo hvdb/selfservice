@@ -45,6 +45,22 @@ var config = {
         includeStackTrace: true, // include stack traces in failures.
         defaultTimeoutInterval: 80000 // wait time in ms before failing a test.
     }
+
+
+
 };
+
+if (process.env.SAUCE_USERNAME != null) {
+    config.sauceUser = process.env.SAUCE_USERNAME;
+    config.sauceKey = process.env.SAUCE_ACCESS_KEY;
+    config.seleniumAddress = null;
+
+    config.multiCapabilities.forEach(function(capability) {
+        capability['tunnel-identifier'] = CI_BUILD_NUMBER;
+        capability['build'] = CI_BUILD_NUMBER;
+        capability['name'] = 'AngularDart E2E Suite';
+    });
+}
+
 
 exports.config = config;
