@@ -63,13 +63,6 @@ var config = {
             platformVersion: '7',
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
             'build': process.env.TRAVIS_BUILD_NUMBER
-        },
-        {
-            'browserName': 'safari',
-             platformName: 'iOS',
-             platformVersion: '7.1',
-             deviceName: 'iPad Simulator',
-            'appium-version' : "1.2.1"
         }
     ],
     baseUrl: 'http://localhost:8080',
