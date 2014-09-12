@@ -1,45 +1,7 @@
 language: node_js
 node_js:
-- '0.11'
-env:
-  matrix:
-  - JOB=unit-dev
-    CHANNEL=dev
-    TESTS=vm
-    BROWSERS=DartiumWithWebPlatform
-  - JOB=unit-dev
-    CHANNEL=dev
-    TESTS=dart2js
-    BROWSERS=SL_Chrome,SL_Firefox
-  - JOB=e2e-dev
-    CHANNEL=dev
-    TESTS=vm
-    BROWSERS=DartiumWithWebPlatform
-  - JOB=e2e-dev
-    CHANNEL=dev
-    TESTS=dart2js
-    BROWSERS=SL_Chrome,SL_Firefox
-  global:
-  - FIREFOX_VERSION="30.0"
-  - CHROME_VERSION="35.0"
-  - secure: AKoqpZ699egF0i4uT/FQ5b4jIc0h+KVbhtVCql0uFxwFIl2HjOYgDayrUCAf6USfpW0LghZxJJhBamWOl/505eNSe9HvEd8JLg/to+1Fo9xi9llsu5ehmNH31/5pue4EvsrVuEap1qqL6/BNwI2cAryayU0p5tV0g8gL5h4IxG8=
-  - LOGS_DIR=/tmp/selfservice/logs
-  - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
-  - SAUCE_USERNAME=angular-ci
-  - SAUCE_ACCESS_KEY=9b988f434ff8-fbca-8aa4-4ae3-35442987
-
+  - "0.11"
 before_install:
-- export DISPLAY=:99.0
-- ./scripts/travis/install.sh
-- if [[ -e SKIP_TRAVIS_TESTS ]]; then { cat SKIP_TRAVIS_TESTS ; exit 0; } fi
-before_script:
-- mkdir -p $LOGS_DIR
-- ./scripts/travis/setup.sh
-#- ./scripts/sauce/sauce_connect_setup.sh
-#- ./scripts/sauce/sauce_connect_block.sh
+  - export DISPLAY=:99.0
 script:
-- ./scripts/travis/build.sh
-after_success:
-- ./scripts/travis/after-success.sh
-after_script:
-- ./scripts/travis/print-logs.sh
+  - ./scripts/travis/run_tests.sh
