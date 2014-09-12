@@ -25,13 +25,14 @@ var config = {
 
     splitTestsBetweenCapabilities: true,
 
-    multiCapabilities: [{
-        'browserName': 'chrome',
-        'name': 'SelfService e2e',
-        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-        'build': process.env.TRAVIS_BUILD_NUMBER
+    multiCapabilities: [
+        {
+            'browserName': 'chrome',
+            'name': 'SelfService e2e',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
 
-    },
+        },
         {
             'browserName': 'firefox',
             'name': 'SelfService e2e',
@@ -41,13 +42,36 @@ var config = {
         {
             'browserName': 'internet explorer',
             'name': 'SelfService e2e',
+            platformName: 'Windows 7',
+            platformVersion: '10',
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
             'build': process.env.TRAVIS_BUILD_NUMBER
 
+        },
+        {
+            'browserName': 'internet explorer',
+            'name': 'SelfService e2e',
+            platformName: 'Windows 8.1',
+            platformVersion: '11',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
+        },
+        {
+            'browserName': 'safari',
+            'name': 'SelfService e2e',
+            platformName: 'OS X 10.9',
+            platformVersion: '7',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
+        },
+        {
+            'browserName': 'safari',
+             platformName: 'iOS',
+             platformVersion: '7.1',
+             deviceName: 'iPad Simulator',
+            'appium-version' : "1.2.1"
         }
-
     ],
-
     baseUrl: 'http://localhost:8080',
 
     jasmineNodeOpts: {
