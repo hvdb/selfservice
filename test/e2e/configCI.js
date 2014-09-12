@@ -44,13 +44,8 @@ var config = {
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
             'build': process.env.TRAVIS_BUILD_NUMBER
 
-        },
-        {
-            'browserName': 'safari',
-            'name': 'SelfService e2e',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            'build': process.env.TRAVIS_BUILD_NUMBER
         }
+
     ],
 
     baseUrl: 'http://localhost:8080',
