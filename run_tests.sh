@@ -21,12 +21,12 @@ export PATH="$DART_SDK/bin:$PATH"
 export DARTIUM_BIN="$PWD/dartium/chrome"
 
 echo Pub install
-pub install
+pub get
 
 npm install
 
 sh -e /etc/init.d/xvfb start
 
-./node_modules/karma/bin/karma start --single-run --browsers Dartium
+./node_modules/karma/bin/karma start karma-start.conf.js --single-run --browsers Dartium
 
 ./node_modules/.bin/protractor_dart test/e2e/configDocker.js

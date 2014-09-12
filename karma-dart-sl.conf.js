@@ -37,8 +37,11 @@ module.exports = function(config) {
         ],
 
         autoWatch: true,
-        captureTimeout: 60000,
-        browserNoActivityTimeout: 50000,
+        // to avoid DISCONNECTED messages when connecting to BrowserStack
+        browserDisconnectTimeout : 10000, // default 2000
+        browserDisconnectTolerance : 1, // default 0
+        browserNoActivityTimeout : 4*60*1000, //default 10000
+        captureTimeout : 4*60*1000, //default 60000
 
         plugins: [
             'karma-dart',
