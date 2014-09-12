@@ -1,5 +1,24 @@
 module.exports = function(config) {
+    // Example set of browsers to run on Sauce Labs
+    // Check out https://saucelabs.com/platforms for all browser/platform combos
+    var customLaunchers = {
+        sl_chrome: {
+            base: 'SauceLabs',
+            browserName: 'chrome',
+            platform: 'Windows 7',
+            version: '35'
+        },
+        sl_firefox: {
+            base: 'SauceLabs',
+            browserName: 'firefox',
+            version: '30'
+        }
+    };
+
     config.set({
+
+        // The rest of your karma config is here
+        // ...
 
         basePath: '.',
         frameworks: ['dart-unittest'],
@@ -33,6 +52,14 @@ module.exports = function(config) {
             suite: 'unit'
         },
 
-        browsers: ['Dartium']
+
+
+        sauceLabs: {
+            testName: 'Selfservice'
+        },
+        customLaunchers: customLaunchers,
+        browsers: Object.keys(customLaunchers),
+        reporters: ['dots', 'saucelabs'],
+        singleRun: true
     });
 };
