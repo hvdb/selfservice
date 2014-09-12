@@ -17,8 +17,9 @@ before_script:
   - ./scripts/wait_for_browser_provider.sh
 
 script:
+  - ./scripts/start_server.sh
   - ./run_tests.sh
-  
+
 after_script:
   - ./scripts/print_logs.sh
 
