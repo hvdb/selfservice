@@ -31,6 +31,6 @@ sh -e /etc/init.d/xvfb start
 
 ./node_modules/karma/bin/karma start karma-dart.conf.js --single-run --browsers Dartium
 
-pub serve & sleep 1
+pub serve & sleep 1000
 
 ./node_modules/.bin/protractor_dart test/e2e/configCI.js
