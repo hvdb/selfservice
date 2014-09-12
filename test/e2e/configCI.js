@@ -1,3 +1,5 @@
+
+
 /**
  * Environment Variables affecting this config.
  * --------------------------------------------
@@ -14,7 +16,9 @@ var configQuery = require('./configQuery.js');
 
 var config = {
     //seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
-    seleniumAddress: 'http://bl00041.nl.europe.intranet:5555/wd/hub',
+//    seleniumAddress: 'http://bl00041.nl.europe.intranet:5555/wd/hub',
+    sauceUser: process.env.SAUCE_USERNAME,
+    sauceKey: process.env.SAUCE_ACCESS_KEY,
     specs: [
         '**/*_spec.dart'
     ],
@@ -22,18 +26,31 @@ var config = {
     splitTestsBetweenCapabilities: true,
 
     multiCapabilities: [{
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+        'name': 'SelfService e2e',
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+        'build': process.env.TRAVIS_BUILD_NUMBER
         //version: 'dartium',
         //count: 4
     },
         {
-            'browserName': 'firefox'
+            'browserName': 'firefox',
+            'name': 'SelfService e2e',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
         },
         {
-            'browserName': 'internet explorer'
+            'browserName': 'internet explorer',
+            'name': 'SelfService e2e',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
+
         },
         {
-            'browserName': 'safari'
+            'browserName': 'safari',
+            'name': 'SelfService e2e',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER
         }
     ],
 
@@ -50,17 +67,7 @@ var config = {
 
 };
 
-if (process.env.SAUCE_USERNAME != null) {
-    config.sauceUser = process.env.SAUCE_USERNAME;
-    config.sauceKey = process.env.SAUCE_ACCESS_KEY;
-    config.seleniumAddress = null;
 
-    config.multiCapabilities.forEach(function(capability) {
-        capability['tunnel-identifier'] = CI_BUILD_NUMBER;
-        capability['build'] = CI_BUILD_NUMBER;
-        capability['name'] = 'AngularDart E2E Suite';
-    });
-}
 
 
 exports.config = config;

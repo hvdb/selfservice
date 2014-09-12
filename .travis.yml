@@ -1,7 +1,25 @@
 language: node_js
+env:
+  global:
+   - SAUCE_USERNAME=henkvandenbrink
+      - SAUCE_ACCESS_KEY=f60cf823-9a8e-4f1b-8df1-d55f3fac020f
+      - LOGS_DIR=/tmp/protractor-build/logs
+      - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
 node_js:
   - "0.11"
 before_install:
   - export DISPLAY=:99.0
+
+
+before_script:
+  - mkdir -p $LOGS_DIR
+  - ./scripts/sauce_connect_setup.sh
+  - ./scripts/wait_for_browser_provider.sh
+
 script:
   - ./run_tests.sh
+  
+after_script:
+  - ./scripts/print_logs.sh
+
+
