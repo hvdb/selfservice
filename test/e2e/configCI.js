@@ -30,8 +30,7 @@ var config = {
         'name': 'SelfService e2e',
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
         'build': process.env.TRAVIS_BUILD_NUMBER
-        //version: 'dartium',
-        //count: 4
+        
     },
         {
             'browserName': 'firefox',
