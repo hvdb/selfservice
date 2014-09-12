@@ -8,9 +8,9 @@
         <ul class="l-stacked nav nav-list nav-list-b" ng-repeat="parent in navBlock.config.parents">
             <li ng-class="{'active-parent': parent.active}"><span>{{parent.title}}</span>
                 <ul ng-repeat="item in parent.items">
-                    <li id="item.id" class="active-parent">
+                    <li  class="active-parent">
 
-                        <a href="{{item.path}}">{{item.title}}</a>
+                        <a id="{{item.id}}" href="{{item.path}}">{{item.title}}</a>
                     </li>
                 </ul>
             </li>

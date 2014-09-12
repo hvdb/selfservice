@@ -7,7 +7,15 @@ main() {
 
     beforeEach(() {
       protractor.getInstance().get('index-e2e.html');
-      element(by.id('addApplication')).click();
+      //login
+      element(by.id('login')).click();
+      element(by.id('username')).sendKeys('henk');
+      element(by.id('password')).sendKeys('henk');
+      element(by.id('loginForm')).submit();
+
+      element(by.id('applications')).click();
+      //click
+      element(by.id('add')).click();
     });
 
     it('should show the form to add a new application', () {
