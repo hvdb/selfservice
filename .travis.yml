@@ -4,4 +4,4 @@ node_js:
 before_install:
   - export DISPLAY=:99.0
 script:
-  - build.sh
+  - ./scripts/travis/run_tests.sh
