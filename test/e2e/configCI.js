@@ -53,7 +53,7 @@ var config = {
         }
     ],
 
-    baseUrl: configQuery.getBaseUrl(),
+    baseUrl: 'http://localhost:9090',
 
     jasmineNodeOpts: {
         isVerbose: true, // display spec names.

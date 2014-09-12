@@ -3,4 +3,3 @@
 
 
 cd ..
-pub serve & sleep 1
