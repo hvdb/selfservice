@@ -38,32 +38,9 @@ var config = {
             'name': 'SelfService e2e',
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
             'build': process.env.TRAVIS_BUILD_NUMBER
-        },
-        {
-            'browserName': 'internet explorer',
-            'name': 'SelfService e2e',
-            platformName: 'Windows 7',
-            platformVersion: '10',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            'build': process.env.TRAVIS_BUILD_NUMBER
-
-        },
-        {
-            'browserName': 'internet explorer',
-            'name': 'SelfService e2e',
-            platformName: 'Windows 8.1',
-            platformVersion: '11',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            'build': process.env.TRAVIS_BUILD_NUMBER
-        },
-        {
-            'browserName': 'safari',
-            'name': 'SelfService e2e',
-            platformName: 'OS X 10.9',
-            platformVersion: '7',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            'build': process.env.TRAVIS_BUILD_NUMBER
         }
+        
+     
     ],
     baseUrl: 'http://localhost:8080',
 
