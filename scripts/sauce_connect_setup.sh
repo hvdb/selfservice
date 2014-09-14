@@ -29,13 +29,5 @@ curl $CONNECT_URL > $CONNECT_DOWNLOAD
 unzip $CONNECT_DOWNLOAD
 rm $CONNECT_DOWNLOAD
 java -jar Sauce-Connect.jar --readyfile $BROWSER_PROVIDER_READY_FILE \
-    --tunnel-identifier $TRAVIS_JOB_NUMBER \
+    --tunnel-identifier $TRAVIS_JOB_NUMBER --logfile $CONNECT_LOG 2> $CONNECT_STDERR 1> $CONNECT_STDOUT \
     $SAUCE_USERNAME $SAUCE_ACCESS_KEY &
-
-
-echo "Starting Sauce Connect in the background, logging into:"
-echo "  $CONNECT_LOG"
-echo "  $CONNECT_STDOUT"
-echo "  $CONNECT_STDERR"
-sauce-connect/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -v $ARGS \
-  --logfile $CONNECT_LOG 2> $CONNECT_STDERR 1> $CONNECT_STDOUT &
