@@ -29,7 +29,7 @@ npm install
 
 sh -e /etc/init.d/xvfb start
 
-./node_modules/karma/bin/karma start karma-dart.conf.js --single-run --browsers Dartium
+#./node_modules/karma/bin/karma start karma-dart.conf.js --single-run --browsers Dartium
 
 pub serve & sleep 60s
 
