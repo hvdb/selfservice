@@ -8,12 +8,12 @@ import 'package:angular/application_factory.dart';
 import 'package:self_service/components/applications/application.dart';
 import 'package:self_service/components/applications/application_details.dart';
 import 'package:self_service/components/applications/applications_list.dart';
-import 'package:self_service/components/navigation/navigation_block.dart';
+import 'package:spectingular_dart/components/navigation/navigation_block.dart';
 import 'package:self_service/components/navigation/navigation.dart';
-import 'package:self_service/components/notification.dart';
+import 'package:spectingular_dart/components/notification.dart';
 import 'package:self_service/components/authentication/authentication.dart';
-import 'package:self_service/services/authentication.dart';
-import 'package:self_service/services/navigation_service.dart' as NavService;
+import 'package:spectingular_dart/services/authentication.dart';
+import 'package:spectingular_dart/services/navigation_service.dart' as NavService;
 import 'package:self_service/services/routing_service.dart';
 
 import 'package:self_service/self_service_route_initializer.dart';

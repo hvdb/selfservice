@@ -48,7 +48,7 @@ packages:
   intl:
     description: intl
     source: hosted
-    version: "0.11.6"
+    version: "0.11.7"
   js:
     description: js
     source: hosted
@@ -77,6 +77,10 @@ packages:
     description: perf_api
     source: hosted
     version: "0.0.9"
+  petitparser:
+    description: petitparser
+    source: hosted
+    version: "1.2.2"
   pool:
     description: pool
     source: hosted
@@ -97,6 +101,13 @@ packages:
     description: source_span
     source: hosted
     version: "1.0.0"
+  spectingular_dart:
+    description:
+      ref: master
+      resolved-ref: e3f108becc99471cb820cd373ad47dd81b07ebf9
+      url: "https://github.com/hvdb/Spectingular.Dart.git"
+    source: git
+    version: "0.0.0"
   stack_trace:
     description: stack_trace
     source: hosted
@@ -116,4 +127,4 @@ packages:
   web_components:
     description: web_components
     source: hosted
-    version: "0.6.0+1"
+    version: "0.7.0"

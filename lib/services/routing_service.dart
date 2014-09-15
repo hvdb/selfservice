@@ -1,13 +1,17 @@
 import 'package:angular/angular.dart';
 import 'dart:async';
 import 'package:self_service/services/authentication.dart';
+import 'package:spectingular_dart/services/routing_service.dart';
+import 'package:logging/logging.dart';
+import 'package:spectingular_dart/services/authentication.dart';
 
 @Injectable()
-class RoutingService {
-
+class RoutingService  {
   AuthenticationService _authentication;
   Router _router;
   RoutingService(this._authentication, this._router) {}
+
+  Logger _log = new Logger('RoutingService');
 
   Map<String, SpRouteCfg> getViewsConfig() {
 
@@ -28,12 +32,6 @@ class RoutingService {
   }
 
 
-
-
-
-
-
-
   SpRouteCfg spRoute({String path, String view, String viewHtml,
                            Map<String, NgRouteCfg> mount, modules(), bool defaultRoute: false,
                            RoutePreEnterEventHandler preEnter, RouteEnterEventHandler enter,
@@ -52,8 +50,10 @@ class RoutingService {
       event.allowEnter(new Future<bool>.value(allowed));
       if(!allowed) {
         if (_authentication.loggedIn) {
+          _log.fine('User logged in but not allowed. redirect to not allowed');
           _router.go('notallowed',{});
         } else {
+          _log.fine('User not logged-in, redirect to login page.');
           _router.go('login',{});
         }
       }
@@ -61,30 +61,6 @@ class RoutingService {
 
     return CustomRoutePreEnterEventHandler;
   }
-
-
-}
-
-
-class SpRouteCfg extends NgRouteCfg {
-
-  final String path;
-  final String view;
-  final String viewHtml;
-  final Map<String, SpRouteCfg> mount;
-  final Function modules;
-  final bool defaultRoute;
-  final bool dontLeaveOnParamChanges;
-  final RouteEnterEventHandler enter;
-  final RoutePreEnterEventHandler preEnter;
-  final RoutePreLeaveEventHandler preLeave;
-  final RouteLeaveEventHandler leave;
-  final String sectionName;
-  final int neededUserLevel;
-
-
-  SpRouteCfg({this.view, this.viewHtml, this.path, this.mount, this.modules, this.defaultRoute,
-             this.enter, this.preEnter, this.preLeave, this.leave, this.dontLeaveOnParamChanges, this.neededUserLevel, this.sectionName});
 
 
 }

@@ -5,6 +5,10 @@ dependencies:
     browser: any
     json_object: any
     web_components: any
+    spectingular_dart:
+        git:
+          url: https://github.com/hvdb/Spectingular.Dart.git
+          ref: master
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'

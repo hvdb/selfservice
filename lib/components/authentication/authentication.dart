@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'package:self_service/services/authentication.dart';
+import 'package:spectingular_dart/services/authentication.dart';
 @Component(
     selector: 'sp-authentication',
     templateUrl: 'packages/self_service/components/authentication/authentication.html',

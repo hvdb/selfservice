@@ -10,16 +10,13 @@ import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
 import 'package:angular/mock/test_injection.dart';
 
-import 'package:self_service/components/notification.dart';
-
 part 'components/applications/application_spec.dart';
-part 'components/notification_spec.dart';
 
 main() {
   guinnessEnableHtmlMatchers();
 
   //testApplication();
-  testNotification();
+
   guinness.initSpecs();
 
 }
