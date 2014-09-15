@@ -1,6 +1,6 @@
 import 'package:angular/angular.dart';
 import 'dart:async';
-import 'package:self_service/services/authentication.dart';
+import 'package:spectingular_dart/services/authentication.dart';
 import 'package:spectingular_dart/services/routing_service.dart';
 import 'package:logging/logging.dart';
 import 'package:spectingular_dart/services/authentication.dart';
