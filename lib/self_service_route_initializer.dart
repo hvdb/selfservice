@@ -9,7 +9,6 @@ class SelfServiceRouterInitializer {
 
   SelfServiceRouterInitializer(this._routingService) {}
 
-
   void call(Router router, RouteViewFactory views) {
     views.configure(_routingService.getViewsConfig());
     }

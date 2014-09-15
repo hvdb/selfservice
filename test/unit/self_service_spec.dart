@@ -15,7 +15,7 @@ part 'components/applications/application_spec.dart';
 main() {
   guinnessEnableHtmlMatchers();
 
-  //testApplication();
+  testApplication();
 
   guinness.initSpecs();
 
