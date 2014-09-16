@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'dart:async';
-import 'package:self_service/services/authentication.dart';
+import 'package:spectingular_dart/services/authentication.dart';
+import 'package:spectingular_dart/services/routing_service.dart';
 import 'package:logging/logging.dart';
 
 @Injectable()
@@ -62,28 +63,3 @@ class RoutingService  {
 
 
 }
-
-
-class SpRouteCfg extends NgRouteCfg {
-
-  final String path;
-  final String view;
-  final String viewHtml;
-  final Map<String, SpRouteCfg> mount;
-  final Function modules;
-  final bool defaultRoute;
-  final bool dontLeaveOnParamChanges;
-  final RouteEnterEventHandler enter;
-  final RoutePreEnterEventHandler preEnter;
-  final RoutePreLeaveEventHandler preLeave;
-  final RouteLeaveEventHandler leave;
-  final String sectionName;
-  final int neededUserLevel;
-
-
-  SpRouteCfg({this.view, this.viewHtml, this.path, this.mount, this.modules, this.defaultRoute,
-             this.enter, this.preEnter, this.preLeave, this.leave, this.dontLeaveOnParamChanges, this.neededUserLevel, this.sectionName});
-
-
-}
-

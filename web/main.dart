@@ -14,9 +14,10 @@ import 'package:self_service/components/navigation/navigation.dart';
 import 'package:spectingular_dart/components/navigation/navigation_block.dart';
 import 'package:spectingular_dart/components/notification.dart';
 import 'package:self_service/components/authentication/authentication.dart';
-import 'package:self_service/services/authentication.dart';
-import 'package:self_service/services/navigation_service.dart' as NavService;
-import 'package:self_service/services/routing_service.dart';
+import 'package:spectingular_dart/services/authentication.dart';
+import 'package:spectingular_dart/services/navigation_service.dart' as NavService;
+import 'package:spectingular_dart/services/routing_service.dart';
+import 'package:self_service/services/routing_service.dart' as SelfServiceRouting;
 
 
 
@@ -32,7 +33,7 @@ class SelfServiceApp extends Module {
     bind(Notification);
     bind(Authentication);
     bind(AuthenticationService);
-    bind(RoutingService);
+    bind(RoutingService, toImplementation: SelfServiceRouting.RoutingService);
     bind(NavigationService, toImplementation: NavService.NavigationService);
     bind(RouteInitializerFn, toImplementation: SelfServiceRouterInitializer);
     bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));

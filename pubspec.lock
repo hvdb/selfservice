@@ -104,7 +104,7 @@ packages:
   spectingular_dart:
     description:
       ref: master
-      resolved-ref: "48b928d11cab3b44b6a8e2aaedb72956d3949aa4"
+      resolved-ref: d90d629439fc8bf7ea3f2a27d550c5f3385b4e1e
       url: "https://github.com/hvdb/Spectingular.Dart.git"
     source: git
     version: "0.0.0"

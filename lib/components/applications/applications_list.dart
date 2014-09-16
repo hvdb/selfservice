@@ -20,9 +20,13 @@ class ApplicationsList {
   bool disableNext = false;
   bool disablePrevious = true;
 
-  ApplicationsList(this._http) {
-    _loadData('limit=$_limit');
+  @NgOneWay('loadOnStart')
+  bool loadOnStart = false;
 
+  ApplicationsList(this._http) {
+    if(loadOnStart) {
+      _loadData('limit=$_limit');
+    }
   }
 
   getNextPage() {
@@ -37,9 +41,7 @@ class ApplicationsList {
     _api_url = Constants.getStashUrl();
     _http.get('http://$_api_url/applications?'+query)
     .then((HttpResponse response) {
-
       apps = response.data["applications"];
-
       if (response.data["nextPageStart"] != null) {
         _nextPageStart = response.data["nextPageStart"];
         disableNext = false;
