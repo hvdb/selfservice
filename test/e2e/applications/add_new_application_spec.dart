@@ -9,8 +9,8 @@ main() {
       protractor.getInstance().get('index-e2e.html');
       //login
       element(by.id('login')).click();
-      element(by.id('username')).sendKeys('henk');
-      element(by.id('password')).sendKeys('henk');
+      element(by.id('username')).sendKeys('user');
+      element(by.id('password')).sendKeys('pass');
       element(by.id('loginForm')).submit();
 
       element(by.id('applications')).click();

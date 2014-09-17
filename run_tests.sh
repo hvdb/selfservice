@@ -24,6 +24,7 @@ export DARTIUM_BIN="$PWD/dartium/chrome"
 
 echo Pub install
 pub get
+pub update
 
 npm install
 
