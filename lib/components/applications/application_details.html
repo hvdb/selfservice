@@ -7,3 +7,15 @@
 <div><a href="{{applicationDetails.application.gitConfiguration.browseUrl}}">Browse stash</a></div><br/>
 
 <a href="#/applications/list" class="btn btn-primary">Previous</a>
+
+<br/>
+<br/>
+<form name="mergeBranch" >
+    <sp-notification id="statusNotification" ng-if="applicationDetails.notification != null" type="applications.notificationType" ><span ng-bind-html="applicationDetails.notification"></span></sp-notification>
+
+    <button id="submitMergeTest" class="btn btn-primary" ng-click="applicationDetails.mergeTo('master')">Merge application to test</button>
+    <button id="submitMergeAcc" class="btn btn-primary" ng-click="applicationDetails.mergeTo('release-a')">Merge application to acceptance</button>
+    <button id="submitMergePrd" class="btn btn-primary" ng-click="applicationDetails.mergeTo('release-prd')">Merge application to production</button>
+
+
+</form>

@@ -1,7 +1,6 @@
 import 'package:angular/angular.dart';
 import 'constants.dart';
 
-
 @Component(
     selector: 'applications-list',
     templateUrl: 'packages/self_service/components/applications/applications_list.html',
@@ -20,13 +19,10 @@ class ApplicationsList {
   bool disableNext = false;
   bool disablePrevious = true;
 
-  @NgOneWay('loadOnStart')
-  bool loadOnStart = false;
 
   ApplicationsList(this._http) {
-    if(loadOnStart) {
       _loadData('limit=$_limit');
-    }
+
   }
 
   getNextPage() {
@@ -36,6 +32,13 @@ class ApplicationsList {
   getPreviousPage() {
       _loadData(_previousQuery);
   }
+
+
+
+
+
+
+  //TODO should be a service.
 
   void _loadData(query) {
     _api_url = Constants.getStashUrl();
