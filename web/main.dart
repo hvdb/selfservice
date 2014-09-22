@@ -25,6 +25,7 @@ import 'package:self_service/self_service_route_initializer.dart';
 
 class SelfServiceApp extends Module {
   SelfServiceApp() {
+    bind(RoutingService, toImplementation: SelfServiceRouting.RoutingService);
     bind(ApplicationsList);
     bind(Applications);
     bind(ApplicationDetails);
@@ -33,7 +34,6 @@ class SelfServiceApp extends Module {
     bind(Notification);
     bind(Authentication);
     bind(AuthenticationService);
-    bind(RoutingService, toImplementation: SelfServiceRouting.RoutingService);
     bind(NavigationService, toImplementation: NavService.NavigationService);
     bind(RouteInitializerFn, toImplementation: SelfServiceRouterInitializer);
     bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));
