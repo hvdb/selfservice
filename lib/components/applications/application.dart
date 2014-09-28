@@ -36,7 +36,7 @@ class Applications {
       if (e.toString().contains('409')) {
         notification = 'De modulenaam bestaat al.';
       } else if(e.toString().contains('417')) {
-        notification = 'De ingevoerde repo admin bestaat niet.';
+        notification = 'De ingevoerde repo admin bestaat niet, repo is toegevoegd. Zie stash om een repoadmin toe te voegen.';
       } else {
         notification = 'Er is iets fout gegaan sorry';
       }
