@@ -21,7 +21,8 @@ var config = {
 
     splitTestsBetweenCapabilities: true,
 
-    multiCapabilities: [{
+    multiCapabilities: [
+        {
         'browserName': 'chrome',
         'chromeOptions': configQuery.getChromeOptions(),
         count: 4

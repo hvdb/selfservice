@@ -1,4 +1,4 @@
-<h1>Details van de applicatie:</h1>
+<h1 id="applicationDetails">Details van de applicatie:</h1>
 
 <div>Id: {{applicationDetails.application.id}}</div>
 <div>Type: {{applicationDetails.application.type}}</div>
@@ -11,7 +11,7 @@
 <br/>
 <br/>
 <form name="mergeBranch" >
-    <sp-notification id="statusNotification" ng-if="applicationDetails.notification != null" type="applications.notificationType" ><span ng-bind-html="applicationDetails.notification"></span></sp-notification>
+    <sp-notification id="statusNotification" ng-if="applicationDetails.notification != null" type="applicationDetails.notificationType" ><span ng-bind-html="applicationDetails.notification"></span></sp-notification>
 
     <button id="submitMergeTest" class="btn btn-primary" ng-click="applicationDetails.mergeTo('master')">Merge application to test</button>
     <button id="submitMergeAcc" class="btn btn-primary" ng-click="applicationDetails.mergeTo('release-a')">Merge application to acceptance</button>
