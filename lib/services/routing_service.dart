@@ -8,6 +8,7 @@ import 'package:logging/logging.dart';
 class RoutingService  {
   AuthenticationService _authentication;
   Router _router;
+
   RoutingService(this._authentication, this._router) {}
 
   Logger _log = new Logger('RoutingService');
@@ -21,11 +22,11 @@ class RoutingService  {
       'logout': spRoute(path: '/logout', view: 'views/security/logout.html', neededUserLevel:-1),
       'applications': spRoute(path: '/applications', mount: {
           'list': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
+          'develop': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
           'add': spRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 2)
        }, neededUserLevel: 1, sectionName: 'administration'),
       'application': spRoute(path: '/application/:applicationId', mount: {
-          'view': spRoute(path: '/view', view: 'views/applications/view.html'),
-          'edit': spRoute(path: '/edit', view: 'views/applications/edit.html')
+          'view': spRoute(path: '/view', view: 'views/applications/view.html')
       }, sectionName: 'administration')
     };
   }
@@ -47,6 +48,7 @@ class RoutingService  {
     void CustomRoutePreEnterEventHandler(RoutePreEnterEvent event) {
       bool allowed = _authentication.isUserAllowed(neededUserLevel);
       event.allowEnter(new Future<bool>.value(allowed));
+
       if(!allowed) {
         if (_authentication.loggedIn) {
           _log.fine('User logged in but not allowed. redirect to not allowed');

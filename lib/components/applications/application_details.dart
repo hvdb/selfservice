@@ -31,15 +31,8 @@ class ApplicationDetails {
 
     _http.post('http://${Constants.getStashUrl()}/application/$_applicationId/merge', {"from":_mergeFrom, "to":branchToMergeTo}).then((HttpResponse response) {
 
-      print('links ${response.data["links"]}' );
-      print('self ${response.data["links"]["self"]}');
-
-
-      String prLink = response.data["links"]["self"][0]["href"];
-print(' link $prLink');
-      notification = 'Success! Pull request state is: ${response.data["state"]}, Pull request link : <a href="${response.data["links"]["self"][0]["href"]}">pull request ${response.data["id"]}</a>';
+      notification = 'Success! Pull request state is: ${response.data["state"]}, See pull-request with id: ${response.data["id"]}';
       notificationType = 'success';
-      print('merged succesfull ' );
     }).catchError((HttpResponse response) {
       notificationType = 'error';
       notification = 'OEPS! Er is iets fout gegaan. Check Stash (pull-requests). Neem contact op en vermeld het volgende: <br/> $response';
