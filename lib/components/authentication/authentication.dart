@@ -18,9 +18,7 @@ class Authentication {
   set logout(bool value) {
     if (value) {
       notification = 'U bent uitgelogd.';
-
       _authService.logOut();
-
     }
   }
 

@@ -1,27 +1,38 @@
 
-<header class="l-header navbar navbar-primary navbar-fixed-top ng-scope">
-    <div class="navbar-backdrop ng-scope">&nbsp;</div>
-    <div class="navbar-topbar ng-scope"></div>
 
+<nav class="navbar navbar-default" role="navigation">
     <div class="container">
-
         <div class="navbar-header">
-            <a href="/" class="navbar-brand" title="ING">
-            <span class="icon-ing-logo font-size-xh">
-                <i class="icon icon-ing-logo-ing"></i>
-                <i class="icon icon-ing-logo-lion"></i>
-            </span>
-            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-application">
+                <span class="sr-only" sp-translation identifier="'navbar-toggle-navigation'"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home" sp-translation identifier="'navbar-label-home'"></a>
         </div>
 
-        <nav class="navbar-collapse bs-navbar-collapse collapse">
-            <ul class="nav navbar-nav nav-pills nav-primary">
-                <li id="home" class="active"><a href="#/home">Home</a></li>
-                <li ><a id="applications" href="#/applications/list">Applications</a></li>
-                <li ><a id="login" href="#/login">Login</a></li>
-                <li id="logout"><a href="#/logout">Logout</a></li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-application">
+            <ul class="nav navbar-nav">
+                <li class="active"><a id="applications" href="#/applications/list" sp-translation identifier="'navbar-label-applications'"></a></li>
             </ul>
-            <div class="segment" id="subTitle"><b>Are You Being Served?</b></div>
-        </nav>
-    </div>
-</header>
+            <!--<form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" sp-translation identifier="'navbar-label-account'"> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/login" sp-translation identifier="'navbar-label-account-login'"></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#/logout" sp-translation identifier="'navbar-label-account-logout'"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

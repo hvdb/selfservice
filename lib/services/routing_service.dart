@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:spectingular_dart/services/authentication.dart';
 import 'package:spectingular_dart/services/routing_service.dart';
 import 'package:logging/logging.dart';
+import 'dart:html';
 
 @Injectable()
 class RoutingService  {
@@ -22,7 +23,6 @@ class RoutingService  {
       'logout': spRoute(path: '/logout', view: 'views/security/logout.html', neededUserLevel:-1),
       'applications': spRoute(path: '/applications', mount: {
           'list': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
-          'develop': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
           'add': spRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 2)
        }, neededUserLevel: 1, sectionName: 'administration'),
       'application': spRoute(path: '/application/:applicationId', mount: {
@@ -58,6 +58,7 @@ class RoutingService  {
           _router.go('login',{});
         }
       }
+
     }
 
     return CustomRoutePreEnterEventHandler;

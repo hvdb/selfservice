@@ -8,7 +8,7 @@ dependencies:
     spectingular_dart:
         git:
           url: https://github.com/hvdb/Spectingular.Dart.git
-          ref: master
+          ref: develop
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'
