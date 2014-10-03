@@ -15,7 +15,7 @@ class ApplicationDependencies {
   var application;
   String _applicationId, _mergeFrom, notification, notificationType, splash;
 
-  ApplicationDetails(RouteProvider routeProvider, this._http) {
+  ApplicationDependencies(this._http) {
     //TODO remove this.
     _applicationId ='gDemo';
     splash = 'dit';

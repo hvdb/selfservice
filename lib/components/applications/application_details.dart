@@ -16,7 +16,7 @@ class ApplicationDetails {
   StateService _stateService;
   String _applicationId, _mergeFrom, notification, notificationType, splash;
 
-  ApplicationDetails(RouteProvider routeProvider, this._http, this._stateService) {
+  ApplicationDetails(this._http, this._stateService) {
     //TODO remove this.
     _applicationId =_stateService.applicationId;
     splash = 'dit';

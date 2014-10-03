@@ -15,7 +15,7 @@ class ApplicationQuality {
   var application;
   String _applicationId, _mergeFrom, notification, notificationType, splash;
 
-  ApplicationDetails(RouteProvider routeProvider, this._http) {
+  ApplicationQuality(this._http) {
     //TODO remove this.
     _applicationId ='gDemo';
     splash = 'dit';
