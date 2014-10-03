@@ -5,10 +5,15 @@ dependencies:
     browser: any
     json_object: any
     web_components: any
+    highcharts4dart: any
     spectingular_dart:
         git:
           url: https://github.com/hvdb/Spectingular.Dart.git
           ref: develop
+dependency_overrides:
+    angular: '0.14.0'
+    intl: '0.11.9'
+    web_components: '0.8.0'
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'

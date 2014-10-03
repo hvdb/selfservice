@@ -10,7 +10,7 @@ class TranslationConfig  {
     Map<String, TranslatedContent> content = new Map<String, TranslatedContent>();
 
     content['homepage'] = new TranslatedContent(nl_NL:'Welkom bij selfService!', en_EN: 'Welcome to selfService!');
-    content['application-notification-module-toegevoegd'] = new TranslatedContent(nl_NL:'De module wordt nu toegevoegd, dit kan even duren.');
+
 
     //Validation message
     content['validation-messages'] = new TranslatedContent(nl_NL:'Er zijn validatiemeldingen');
@@ -21,8 +21,13 @@ class TranslationConfig  {
     content['new-application-title'] = new TranslatedContent(nl_NL: '<strong>Vul hier de gegevens in van de nieuwe module. <b>Repo admin</b> moet een bekende corp key zijn in stash.</strong>');
     content['new-application-label'] =  new TranslatedContent(nl_NL: 'Application name:');
     content['new-application-repoadmin'] =  new TranslatedContent(nl_NL: 'Repo admin:');
+    content['new-application-notification-module-wordt-toegevoegd'] = new TranslatedContent(nl_NL:'De module wordt nu toegevoegd, dit kan even duren.');
+    content['new-application-notification-module-is-toegevoegd'] = new TranslatedContent(nl_NL:'Uw module is toegevoegd.');
+    content['new-application-notification-module-bestaat'] = new TranslatedContent(nl_NL:'De modulenaam bestaat al.');
+    content['new-application-notification-module-error'] = new TranslatedContent(nl_NL:'Er is iets fout gegaan sorry.');
+    content['new-application-notification-module-repoadmin-bestaat-niet'] = new TranslatedContent(nl_NL:'De ingevoerde repo admin bestaat niet, repo is toegevoegd. Zie stash om een repoadmin toe te voegen.');
 
-    //login
+  //login
     content['login-title'] = new TranslatedContent(nl_NL: 'Login formulier');
     content['login-label-username'] = new TranslatedContent(nl_NL: 'Gebruikersnaam');
     content['login-label-password'] = new TranslatedContent(nl_NL: 'Wachtwoord');
@@ -38,10 +43,26 @@ class TranslationConfig  {
 
 
     //Navigation block
-    content['navigation-block-administration'] = new TranslatedContent(nl_NL:'Administration');
-    content['navigation-block-administration-applications'] = new TranslatedContent(nl_NL:'Applicaties');
-    content['navigation-block-administration-applications-list'] = new TranslatedContent(nl_NL:'Lijst');
-    content['navigation-block-administration-applications-add'] = new TranslatedContent(nl_NL:'Toevoegen');
+    content['navigation-block-apps-administration'] = new TranslatedContent(nl_NL:'Administratie');
+    content['navigation-block-apps-administration-applications'] = new TranslatedContent(nl_NL:'Applicaties');
+    content['navigation-block-apps-administration-applications-list'] = new TranslatedContent(nl_NL:'Lijst');
+    content['navigation-block-apps-administration-applications-add'] = new TranslatedContent(nl_NL:'Toevoegen');
+
+    content['navigation-block-apps-administration-applications-add'] = new TranslatedContent(nl_NL:'Toevoegen');
+
+
+    content['navigation-block-app-administration-application-view'] = new TranslatedContent(nl_NL:'Details');
+    content['navigation-block-app-administration-application'] = new TranslatedContent(nl_NL:'Applicatie');
+    content['navigation-block-app-administration-application-config'] = new TranslatedContent(nl_NL:'Branch config');
+    content['navigation-block-app-administration-application-quality'] = new TranslatedContent(nl_NL:'Kwaliteit');
+    content['navigation-block-app-administration'] = new TranslatedContent(nl_NL:'Administratie');
+    content['navigation-block-app-administration-application-builds'] = new TranslatedContent(nl_NL:'Builds');
+
+    //application config
+    content['application-config-merge-test'] = new TranslatedContent(nl_NL:'Merge applicatie naar test');
+    content['application-config-merge-acc'] = new TranslatedContent(nl_NL:'Merge applicatie naar acceptatie');
+    content['application-config-merge-prd'] = new TranslatedContent(nl_NL:'Merge applicatie naar PRODUCTIE');
+
 
 
     return content;

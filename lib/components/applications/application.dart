@@ -22,21 +22,21 @@ class Applications {
   createNewRepo() {
 
     api_url = Constants.getStashUrl();
-    notification = 'application-notification-module-toegevoegd';
+    notification = 'new-application-notification-module-wordt-toegevoegd';
     notificationType = 'info';
 
     _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
 
-      notification = 'Uw module is toegevoegd, kijk voor de details :<a href="#/application/'+applicationName+'/view">hier</a>';
+      notification = 'new-application-notification-module-is-toegevoegd';
       notificationType = 'success';
 
     }).catchError((e) {
       if (e.toString().contains('409')) {
-        notification = 'De modulenaam bestaat al.';
+        notification = 'new-application-notification-module-bestaat';
       } else if(e.toString().contains('417')) {
-        notification = 'De ingevoerde repo admin bestaat niet, repo is toegevoegd. Zie stash om een repoadmin toe te voegen.';
+        notification = 'new-application-notification-module-repoadmin-bestaat-niet';
       } else {
-        notification = 'Er is iets fout gegaan sorry';
+        notification = 'new-application-notification-module-error';
       }
 
       notificationType = 'error';

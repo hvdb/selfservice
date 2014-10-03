@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <!-- Table -->
+    <table class="table table-b">
+        <thead>
+        <tr>
+            <th ng-if="!builds.showEnvironmentStatus">#</th>
+            <th ng-if="!builds.showEnvironmentStatus">Branch</th>
+            <th>Environment</th>
+            <th ng-if="!builds.showEnvironmentStatus">Status</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="build in builds.results.builds">
+        <tr ng-class="{'danger' : build['status'] == 'error','success' : build['status'] == 'ok', 'warning':build['status'] == 'warning', 'info':build['status'] == 'progress'}">
+            <td ng-if="!builds.showEnvironmentStatus">{{build['number']}}</td>
+            <td ng-if="!builds.showEnvironmentStatus">{{build['branch']}}</td>
+            <td><a href="#/application/{{build.applicationName}}/build/{{build['number']}}">{{build['environment']}}</a></td>
+            <td ng-if="!builds.showEnvironmentStatus">{{build['status']}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

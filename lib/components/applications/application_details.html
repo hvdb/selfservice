@@ -1,21 +1,17 @@
-<h1 id="applicationDetails">Details van de applicatie:</h1>
 
+<div><h2>Type: Frontend application</h2></div>
 <div>Id: {{applicationDetails.application.id}}</div>
 <div>Type: {{applicationDetails.application.type}}</div>
 <div>Name: {{applicationDetails.application.name}}</div><br/>
 <div>Clone url: {{applicationDetails.application.gitConfiguration.repoUrl}}</div><br/>
 <div><a href="{{applicationDetails.application.gitConfiguration.browseUrl}}">Browse stash</a></div><br/>
 
-<a href="#/applications/list" class="btn btn-primary">Previous</a>
-
-<br/>
-<br/>
 <form name="mergeBranch" >
-    <sp-notification id="statusNotification" ng-if="applicationDetails.notification != null" type="applicationDetails.notificationType" ><span ng-bind-html="applicationDetails.notification"></span></sp-notification>
+    <sp-notification id="statusNotification" ng-if="overview.notification != null" type="overview.notificationType" ><span ng-bind-html="overview.notification"></span></sp-notification>
 
-    <button id="submitMergeTest" class="btn btn-primary" ng-click="applicationDetails.mergeTo('master')">Merge application to test</button>
-    <button id="submitMergeAcc" class="btn btn-primary" ng-click="applicationDetails.mergeTo('release-a')">Merge application to acceptance</button>
-    <button id="submitMergePrd" class="btn btn-primary" ng-click="applicationDetails.mergeTo('release-prd')">Merge application to production</button>
+    <button id="submitMergeTest" class="btn btn-primary" ng-click="overview.mergeTo('master')" sp-translation identifier="'application-config-merge-test'"></button>
+    <button id="submitMergeAcc" class="btn btn-primary btn-warning" ng-click="overview.mergeTo('release-a')" sp-translation identifier="'application-config-merge-acc'"></button>
+    <button id="submitMergePrd" class="btn btn-primary btn-danger" ng-click="overview.mergeTo('release-prd')" sp-translation identifier="'application-config-merge-prd'"></button>
 
 
 </form>
