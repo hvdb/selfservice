@@ -16,25 +16,9 @@ class ApplicationPullRequest {
   String _applicationId, _mergeFrom, notification, notificationType, splash;
 
   ApplicationPullRequest(this._http) {
-    //TODO remove this.
-    _applicationId ='gDemo';
-    splash = 'dit';
-    //_applicationId = routeProvider.parameters['applicationId'];
-    _loadData();
-  }
-
-
-  void _loadData() {
-    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId')
-    .then((HttpResponse response) {
-      application = response.data;
-    })
-    .catchError((e) {
-      print(e);
-
-    });
 
   }
+
 
 
 

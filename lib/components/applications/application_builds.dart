@@ -15,7 +15,6 @@ class ApplicationBuilds {
 
   @NgTwoWay('showEnvironmentStatus')
   set showEnvStatus(bool boolean) {
-    print('hier');
      showEnvironmentStatus = boolean;
      results = JSON.decode('{"builds": [{ "environment":"develop","status" :"warning" },{ "environment":"test","status" :"ok" },{ "environment":"acceptance","status" :"error" },{"environment":"production","status" :"ok" }]}');
 
@@ -24,7 +23,6 @@ class ApplicationBuilds {
 
   @NgTwoWay('limit')
   set limit(int limit) {
-    print('limit $limit');
     if (!showEnvironmentStatus) {
       results = JSON.decode('{"builds": [{"number":"1238" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"error" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" }]}');
     }
@@ -36,3 +34,5 @@ class ApplicationBuilds {
 
 
 }
+
+

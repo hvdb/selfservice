@@ -65,6 +65,9 @@ class TranslationConfig  {
 
 
 
+    //Application-details
+    content['application-details-technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan met het ophalen van de data.');
+
     return content;
   }
 
