@@ -11,6 +11,8 @@ class TranslationConfig  {
 
     content['homepage'] = new TranslatedContent(nl_NL:'Welkom bij selfService!', en_EN: 'Welcome to selfService!');
 
+    content['technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan met het ophalen van de data.');
+
 
     //Validation message
     content['validation-messages'] = new TranslatedContent(nl_NL:'Er zijn validatiemeldingen');

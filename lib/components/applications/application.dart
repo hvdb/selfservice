@@ -5,7 +5,7 @@ import 'constants.dart';
 @Component(
     selector: 'application',
     templateUrl: 'packages/self_service/components/applications/application.html',
-    useShadowDom: false,
+    useShadowDom: true,
     publishAs: 'applications')
 class Applications {
 

@@ -1,5 +1,7 @@
 import 'package:angular/angular.dart';
 import 'dart:convert';
+import 'constants.dart';
+import 'package:self_service/services/state_service.dart';
 
 @Component(
     selector: 'application-builds',
@@ -9,29 +11,39 @@ import 'dart:convert';
 class ApplicationBuilds {
 
   Map results;
-
+  final Http _http;
+  StateService _stateService;
+  String applicationId, notification, notificationType;
 
   bool showEnvironmentStatus;
 
   @NgTwoWay('showEnvironmentStatus')
   set showEnvStatus(bool boolean) {
      showEnvironmentStatus = boolean;
-     results = JSON.decode('{"builds": [{ "environment":"develop","status" :"warning" },{ "environment":"test","status" :"ok" },{ "environment":"acceptance","status" :"error" },{"environment":"production","status" :"ok" }]}');
-
   }
 
 
   @NgTwoWay('limit')
   set limit(int limit) {
-    if (!showEnvironmentStatus) {
-      results = JSON.decode('{"builds": [{"number":"1238" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"error" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" }]}');
-    }
+
   }
 
-  ApplicationBuilds() {
-    results = JSON.decode('{"builds": [{"number":"1238" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"error" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"error" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"ok" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"warning" },{"number":"1239" ,"applicationName":"gDemo","branch": "origin/master", "environment":"acceptance","status" :"progress" }]}');
+  ApplicationBuilds(this._http, this._stateService) {
+    _loadData();
   }
 
+
+  _loadData() {
+    applicationId = _stateService.applicationId.toLowerCase();
+    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId')
+    .then((HttpResponse response) {
+      results = response.data;
+    })
+    .catchError((e) {
+      notification = 'technical-error';
+      notificationType = 'error';
+    });
+  }
 
 }
 

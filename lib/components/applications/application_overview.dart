@@ -16,7 +16,11 @@ class ApplicationOverview {
   String  splash;
 
   ApplicationOverview(RouteProvider routeProvider,this._stateService) {
-    _stateService.applicationId = routeProvider.parameters['applicationId'];
+    String applicationId = routeProvider.parameters['applicationId'];
+    if (applicationId != null) {
+      _stateService.applicationId = applicationId;
+    }
+
   }
 
 

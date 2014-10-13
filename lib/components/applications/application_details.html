@@ -1,18 +1,13 @@
 <sp-notification id="statusNotification" ng-if="details.notification != null" type="details.notificationType" ><span sp-translation identifier="details.notification"></span></sp-notification>
 
 <div ng-if="details.notificationType != 'error'">
-    <div><h2>Type: Frontend application</h2></div>
-    <div>Id: {{details.application.id}}</div>
-    <div>Type: {{details.application.type}}</div>
     <div>Name: {{details.application.name}}</div><br/>
     <div>Clone url: {{details.application.gitConfiguration.repoUrl}}</div><br/>
     <div><a href="{{details.application.gitConfiguration.browseUrl}}">Browse stash</a></div><br/>
 
     <form name="mergeBranch" >
-
         <button id="submitMergeTest" class="btn btn-primary" ng-click="details.mergeTo('master')" sp-translation identifier="'application-config-merge-test'"></button>
         <button id="submitMergeAcc" class="btn btn-primary btn-warning" ng-click="details.mergeTo('release-a')" sp-translation identifier="'application-config-merge-acc'"></button>
-        <button id="submitMergePrd" class="btn btn-primary btn-danger" ng-click="details.mergeTo('release-prd')" sp-translation identifier="'application-config-merge-prd'"></button>
-
+        <!--<button id="submitMergePrd" class="btn btn-primary btn-danger" ng-click="details.mergeTo('release-prd')" sp-translation identifier="'application-config-merge-prd'"></button> -->
     </form>
 </div>
