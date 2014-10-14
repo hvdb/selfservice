@@ -6,9 +6,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="dependency in dependencies.config.develop" >
+    <tr ng-repeat="dependency in dependencies.deps" >
         <td>{{dependency['name']}}</td>
-        <td>{{dependency['url']}}</td>
+        <td>{{dependency['value']}}</td>
     </tr>
     </tbody>
 </table>
