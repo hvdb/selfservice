@@ -28,7 +28,7 @@ import 'package:spectingular_dart/services/navigation_service.dart' as NavServic
 import 'package:spectingular_dart/services/routing_service.dart';
 import 'package:self_service/services/state_service.dart';
 import 'package:self_service/services/routing_service.dart' as SelfServiceRouting;
-import 'package:highcharts4dart/highcharts.dart' as HighCharts;
+//import 'package:highcharts4dart/highcharts.dart' as HighCharts;
 import 'package:self_service/services/translation_config.dart' as TransConf;
 
 
@@ -55,7 +55,7 @@ class SelfServiceApp extends Module {
     bind(ApplicationDependencies);
     bind(ApplicationStatus);
     bind(ApplicationPullRequest);
-    bind(HighCharts.HighChartComponent);
+   // bind(HighCharts.HighChartComponent);
     bind(TranslationConfig, toImplementation: TransConf.TranslationConfig);
     bind(NavigationService, toImplementation: NavService.NavigationService);
     bind(RouteInitializerFn, toImplementation: SelfServiceRouterInitializer);

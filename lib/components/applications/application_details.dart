@@ -1,5 +1,4 @@
 
-import 'package:highcharts4dart/highcharts.dart';
 import 'package:angular/angular.dart';
 import 'constants.dart';
 import 'package:self_service/services/state_service.dart';
