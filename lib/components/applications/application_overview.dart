@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:self_service/services/state_service.dart';
 
 
@@ -15,7 +15,7 @@ class ApplicationOverview {
 
   ApplicationOverview(RouteProvider routeProvider,this._stateService) {
     String applicationId = routeProvider.parameters['applicationId'];
-    if (applicationId != null) {
+    if (applicationId != null && applicationId != ':applicationId') {
       _stateService.applicationId = applicationId;
     }
 

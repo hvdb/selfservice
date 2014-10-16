@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 @Component(
     selector: 'applications-list',
@@ -21,7 +21,9 @@ class ApplicationsList {
 
 
   ApplicationsList(this._http) {
-      _loadData('limit=$_limit');
+
+
+    _loadData('limit=$_limit');
 
   }
 
@@ -41,9 +43,11 @@ class ApplicationsList {
   //TODO should be a service.
 
   void _loadData(query) {
+
     _api_url = Constants.getStashUrl();
-    _http.get('http://$_api_url/applications?'+query)
+    _http.get('http://$_api_url/applications?'+query, withCredentials:true)
     .then((HttpResponse response) {
+      print('list');
       apps = response.data["applications"];
       if (response.data["nextPageStart"] != null) {
         _nextPageStart = response.data["nextPageStart"];
@@ -73,7 +77,6 @@ class ApplicationsList {
 
     })
     .catchError((e) {
-      print(e);
 
     });
 

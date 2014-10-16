@@ -1,1 +1,28 @@
-Overview pull request
+<sp-notification id="statusNotification" ng-if="pr.notification != null" type="pr.notificationType" ><span sp-translation identifier="pr.notification"></span></sp-notification>
+
+
+<div class="panel panel-default" ng-if="pr.notification == null">
+    <!-- Default panel contents -->
+
+    <!-- Table -->
+    <table class="table table-b" >
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Who</th>
+            <th>Created Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="pr in pr.pullRequests['values']">
+            <td><a href="{{pr['links']['self'][0]['href']}}">{{pr['id']}}</a></td>
+            <td>{{pr['title']}}</td>
+            <td>{{pr['author']['user']['displayName']}}</td>
+            <td>{{pr['createdDate'] | date}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+

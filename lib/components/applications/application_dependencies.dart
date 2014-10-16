@@ -1,7 +1,7 @@
 import 'package:angular/angular.dart';
 import 'dart:convert';
 import 'package:self_service/services/state_service.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'dart:async';
 
 @Component(
@@ -18,14 +18,13 @@ class ApplicationDependencies {
   List deps = new List();
   String applicationId, notification, notificationType;
 
-
   ApplicationDependencies(this._http, this._stateService) {
     _loadData();
   }
 
   _loadData() {
     applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/dependencies/develop')
+    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/dependencies/develop', withCredentials:true)
     .then((HttpResponse response) {
       config = response.data;
       Map dependencies = config['dependencies'];

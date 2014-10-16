@@ -1,5 +1,8 @@
 import 'package:angular/angular.dart';
 import 'package:spectingular_dart/services/authentication.dart';
+import '../constants.dart';
+
+
 @Component(
     selector: 'sp-authentication',
     templateUrl: 'packages/self_service/components/authentication/authentication.html',
@@ -9,7 +12,8 @@ class Authentication {
 
   AuthenticationService _authService;
   Router _router;
-  Authentication(this._authService, this._router) {}
+  Http _http;
+  Authentication(this._authService, this._router, this._http) {}
 
   String username, password, notification;
 
@@ -23,12 +27,22 @@ class Authentication {
   }
 
   login() {
-    if (_authService.logIn(username,password)) {
+
+
+    _http.post('http://${Constants.getStashUrl()}/login', {"username":username,"password": password}, withCredentials:true)
+    .then((HttpResponse response) {
+
+      _authService.loggedIn = true;
+      _authService.loggedInUserLevel = 99;
+      _authService.loggedInUser = username;
+
       notification = 'U bent ingelogd.';
       _router.go('root',{});
-    } else {
-      notification = 'Invalid credentials.';
-    }
+    })
+    .catchError((e) {
+      notification = 'Invalid credentials. or service exception';
+    });
+
 
   }
 

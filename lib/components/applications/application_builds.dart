@@ -1,6 +1,6 @@
 import 'package:angular/angular.dart';
 import 'dart:convert';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:self_service/services/state_service.dart';
 
 @Component(
@@ -20,6 +20,9 @@ class ApplicationBuilds {
   @NgTwoWay('showEnvironmentStatus')
   set showEnvStatus(bool boolean) {
      showEnvironmentStatus = boolean;
+
+
+
   }
 
 
@@ -35,7 +38,7 @@ class ApplicationBuilds {
 
   _loadData() {
     applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId')
+    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId', withCredentials:true)
     .then((HttpResponse response) {
       results = response.data;
     })

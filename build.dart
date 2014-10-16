@@ -17,8 +17,8 @@ void main() {
 
   //Change api url to the one of boot2docker
 
-  new File ('lib/components/applications/constants.dart').copySync('lib/components/applications/constants_backup.dart');
-  new File('boot2DockerConstants.dart').copySync('lib/components/applications/constants.dart');
+  new File ('lib/components/constants.dart').copySync('lib/components/constants_backup.dart');
+  new File('boot2DockerConstants.dart').copySync('lib/components/constants.dart');
 
 
   //Run pub get
@@ -46,7 +46,7 @@ void main() {
 
   //if no problems, publish docker images.
 //  _runProcess('Docker stop','docker', ['stop', '$dockerContainerId']);
-  new File ('lib/components/applications/constants_backup.dart').copySync('lib/components/applications/constants.dart');
+  new File ('lib/components/constants_backup.dart').copySync('lib/components/constants.dart');
   if(!error) {
 
     log.fine('ok we are going to publish the docker image!');

@@ -1,0 +1,32 @@
+<sp-notification id="statusNotification" ng-if="conf.notification != null" type="conf.notificationType" ><span sp-translation identifier="conf.notification"></span></sp-notification>
+
+<div class="panel panel-default" ng-if="conf.notificationType != 'error'">
+    <!-- Default panel contents -->
+    <form id="branchConfigForm" name="branchConfigForm" >
+    <!-- Table -->
+    <table class="table table-b" >
+        <thead>
+        <tr>
+            <th>Develop</th>
+            <th>Test</th>
+            <th>Acceptatie</th>
+            <th>Productie</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td><input id="develop" name="develop" type="text" ng-model="conf.develop" ng-required="true" ng-readonly="conf.readonly" size="10"/></td>
+            <td><input id="test" name="test" type="text" ng-model="conf.test" ng-required="true" ng-readonly="conf.readonly" size="10" /></td>
+            <td><input id="acceptance" name="acceptance" type="text" ng-model="conf.acceptance" ng-required="true" ng-readonly="conf.readonly" size="10" /></td>
+            <td><input id="production" name="production" type="text" ng-model="conf.production" ng-required="true" ng-readonly="conf.readonly" size="10" /></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+    <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && (newApplicationForm['applicationName'].dirty &&newApplicationForm['repoAdmin'].dirty)" type="'error'" sp-translation identifier="'validation-messages'"></sp-notification>
+    <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid" ng-click="conf.save()"/>
+</div>
+
+
+

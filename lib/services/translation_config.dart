@@ -11,7 +11,7 @@ class TranslationConfig  {
 
     content['homepage'] = new TranslatedContent(nl_NL:'Welkom bij selfService!', en_EN: 'Welcome to selfService!');
 
-    content['technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan met het ophalen van de data.');
+    content['technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan.');
 
 
     //Validation message
@@ -69,6 +69,12 @@ class TranslationConfig  {
 
     //Application-details
     content['application-details-technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan met het ophalen van de data.');
+
+    //Application-pull-requests
+    content['application-pull-requests-not-found'] = new TranslatedContent(nl_NL:'Er zijn geen openstaande pull requests.');
+
+    //application branch config
+    content['application-branch-config-notification-post-success'] = new TranslatedContent(nl_NL:'De branches zijn aangepast.');
 
     return content;
   }

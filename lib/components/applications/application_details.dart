@@ -1,6 +1,6 @@
 
 import 'package:angular/angular.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:self_service/services/state_service.dart';
 
 @Component(
@@ -21,7 +21,8 @@ class ApplicationDetails {
   }
 
   void _loadData() {
-    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId')
+
+    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId', withCredentials:true)
     .then((HttpResponse response) {
       application = response.data;
     })
@@ -42,7 +43,7 @@ class ApplicationDetails {
 
     notification = '<b>De brance $_mergeFrom wordt gemerged naar $branchToMergeTo, even geduld alstublieft. Alles gebeurd via pull requests zie stash.</b>';
     notificationType = 'info';
-    _http.post('http://${Constants.getStashUrl()}/application/$_applicationId/merge', {"from":_mergeFrom, "to":branchToMergeTo}).then((HttpResponse response) {
+    _http.post('http://${Constants.getStashUrl()}/application/$_applicationId/merge', {"from":_mergeFrom, "to":branchToMergeTo}, withCredentials:true).then((HttpResponse response) {
 
       notification = 'Success! Pull request state is: ${response.data["state"]}, See pull-request with id: ${response.data["id"]}';
       notificationType = 'success';

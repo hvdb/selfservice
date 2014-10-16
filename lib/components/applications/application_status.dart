@@ -1,7 +1,7 @@
 
 import 'package:highcharts4dart/highcharts.dart';
 import 'package:angular/angular.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 
 @Component(

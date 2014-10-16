@@ -14,7 +14,7 @@ import 'package:self_service/components/applications/application_quality.dart';
 import 'package:self_service/components/applications/application_status.dart';
 import 'package:self_service/components/applications/application_pr.dart';
 import 'package:self_service/components/applications/application_dependencies.dart';
-import 'package:self_service/components/applications/configure_application.dart';
+import 'package:self_service/components/applications/application_branchconfig.dart';
 import 'package:self_service/components/applications/application_builds.dart';
 
 import 'package:self_service/components/navigation/navigation.dart';
@@ -48,7 +48,7 @@ class SelfServiceApp extends Module {
     bind(AuthenticationService);
     bind(Translation);
     bind(TranslationService);
-    bind(ConfigureBranches);
+    bind(ApplicationBranchConfig);
     bind(ApplicationBuilds);
     bind(ApplicationOverview);
     bind(ApplicationQuality);
