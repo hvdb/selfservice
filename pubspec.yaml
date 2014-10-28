@@ -6,6 +6,8 @@ dependencies:
     json_object: any
     web_components: any
     highcharts4dart: any
+    jquery_for_pub: any
+    bootstrap_for_pub: '>=3.3.0+1 <4.0.0'
     spectingular_dart:
         git:
           url: https://github.com/hvdb/Spectingular.Dart.git
@@ -14,6 +16,7 @@ dependency_overrides:
     angular: '0.14.0'
     intl: '0.11.9'
     web_components: '0.8.0'
+    html5lib: '0.11.0+1'
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'
@@ -23,3 +26,6 @@ transformers:
 - angular
 - $dart2js:
     minify: true
+- bootstrap_for_pub:
+     url: //maxcdn.bootstrapcdn.com/bootstrap/{{version}}
+     version: 3.2.0
