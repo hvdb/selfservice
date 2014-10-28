@@ -15,15 +15,13 @@ class ApplicationPullRequest {
   String _applicationId, _mergeFrom, notification, notificationType, splash;
   StateService _stateService;
 
-
-
   ApplicationPullRequest(this._http, this._stateService) {
     _loadData();
   }
 
   _loadData() {
     _applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId/pullrequests', withCredentials:true)
+    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId/pullrequests')
     .then((HttpResponse response) {
       pullRequests = response.data;
       print('pr found');

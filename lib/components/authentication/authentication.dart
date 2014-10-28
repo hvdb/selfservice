@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:spectingular_dart/services/authentication.dart';
+import 'dart:html';
 import '../constants.dart';
 
 
@@ -28,9 +29,11 @@ class Authentication {
 
   login() {
 
-
-    _http.post('http://${Constants.getStashUrl()}/login', {"username":username,"password": password}, withCredentials:true)
+    _http.post('http://${Constants.getStashUrl()}/login', {"username":username,"password": password})
     .then((HttpResponse response) {
+      String jwt = response.headers('authorization');
+      Storage localStorage = window.localStorage;
+      localStorage['jwt'] = jwt;
 
       _authService.loggedIn = true;
       _authService.loggedInUserLevel = 99;

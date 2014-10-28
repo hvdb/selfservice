@@ -44,8 +44,12 @@ class ApplicationsList {
 
   void _loadData(query) {
 
+
+
     _api_url = Constants.getStashUrl();
-    _http.get('http://$_api_url/applications?'+query, withCredentials:true)
+
+
+    _http.get('http://$_api_url/applications?='+query)
     .then((HttpResponse response) {
       print('list');
       apps = response.data["applications"];

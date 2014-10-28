@@ -38,7 +38,7 @@ class ApplicationBuilds {
 
   _loadData() {
     applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId', withCredentials:true)
+    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId')
     .then((HttpResponse response) {
       results = response.data;
     })

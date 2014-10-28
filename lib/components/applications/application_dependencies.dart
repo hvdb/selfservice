@@ -24,7 +24,7 @@ class ApplicationDependencies {
 
   _loadData() {
     applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/dependencies/develop', withCredentials:true)
+    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/dependencies/develop')
     .then((HttpResponse response) {
       config = response.data;
       Map dependencies = config['dependencies'];

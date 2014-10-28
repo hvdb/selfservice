@@ -1,4 +1,3 @@
-
 import 'package:angular/angular.dart';
 import '../constants.dart';
 
@@ -25,7 +24,7 @@ class Applications {
     notification = 'new-application-notification-module-wordt-toegevoegd';
     notificationType = 'info';
 
-    _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}, withCredentials:true).then((HttpResponse response) {
+    _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
 
       notification = 'new-application-notification-module-is-toegevoegd';
       notificationType = 'success';

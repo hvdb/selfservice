@@ -23,9 +23,10 @@
         </tr>
         </tbody>
     </table>
-    </form>
+
     <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && (newApplicationForm['applicationName'].dirty &&newApplicationForm['repoAdmin'].dirty)" type="'error'" sp-translation identifier="'validation-messages'"></sp-notification>
-    <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid" ng-click="conf.save()"/>
+    <input id="submitButton" class="btn btn-primary" type="submit" ng-click="conf.save()"/>
+    </form>
 </div>
 
 

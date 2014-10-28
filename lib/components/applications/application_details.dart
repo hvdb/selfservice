@@ -21,8 +21,7 @@ class ApplicationDetails {
   }
 
   void _loadData() {
-
-    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId', withCredentials:true)
+    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId')
     .then((HttpResponse response) {
       application = response.data;
     })
@@ -30,10 +29,7 @@ class ApplicationDetails {
       notification = 'application-details-technical-error';
       notificationType = 'error';
     });
-
   }
-
-
 
   mergeTo(String branchToMergeTo) {
 
@@ -43,7 +39,7 @@ class ApplicationDetails {
 
     notification = '<b>De brance $_mergeFrom wordt gemerged naar $branchToMergeTo, even geduld alstublieft. Alles gebeurd via pull requests zie stash.</b>';
     notificationType = 'info';
-    _http.post('http://${Constants.getStashUrl()}/application/$_applicationId/merge', {"from":_mergeFrom, "to":branchToMergeTo}, withCredentials:true).then((HttpResponse response) {
+    _http.post('http://${Constants.getStashUrl()}/application/$_applicationId/merge', {"from":_mergeFrom, "to":branchToMergeTo}).then((HttpResponse response) {
 
       notification = 'Success! Pull request state is: ${response.data["state"]}, See pull-request with id: ${response.data["id"]}';
       notificationType = 'success';

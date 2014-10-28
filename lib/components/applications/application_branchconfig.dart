@@ -27,7 +27,7 @@ class ApplicationBranchConfig {
 
   _loadData() {
     applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig', withCredentials:true)
+    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig')
     .then((HttpResponse response) {
       currentConfig = response.data;
       develop = currentConfig['develop'];
@@ -49,10 +49,12 @@ class ApplicationBranchConfig {
     config.acceptatie = acceptance;
     config.productie = production;
 
-    _http.post('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig', JSON.encode(config), withCredentials:true).then((HttpResponse response) {
+    _http.post('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig', JSON.encode(config)).then((HttpResponse response) {
+      print('ok');
       notification = 'application-branch-config-notification-post-success';
       notificationType = 'success';
     }).catchError((e) {
+      print('error');
       notification = 'technical-error';
       notificationType = 'error';
     });

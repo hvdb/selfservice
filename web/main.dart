@@ -19,7 +19,7 @@ import 'package:self_service/components/applications/application_builds.dart';
 
 import 'package:self_service/components/navigation/navigation.dart';
 import 'package:spectingular_dart/components/navigation/navigation_block.dart';
-import 'package:spectingular_dart/components/notification.dart';
+import 'package:spectingular_dart/components/notification.dart' as Noti;
 import 'package:self_service/components/authentication/authentication.dart';
 import 'package:spectingular_dart/components/translation/translation.dart';
 import 'package:spectingular_dart/services/translation_service.dart';
@@ -30,6 +30,7 @@ import 'package:self_service/services/state_service.dart';
 import 'package:self_service/services/routing_service.dart' as SelfServiceRouting;
 //import 'package:highcharts4dart/highcharts.dart' as HighCharts;
 import 'package:self_service/services/translation_config.dart' as TransConf;
+import 'dart:html';
 
 
 import 'package:self_service/self_service_route_initializer.dart';
@@ -43,7 +44,7 @@ class SelfServiceApp extends Module {
     bind(ApplicationDetails);
     bind(NavigationBlockComponent);
     bind(Navigation);
-    bind(Notification);
+    bind(Noti.Notification);
     bind(Authentication);
     bind(AuthenticationService);
     bind(Translation);
@@ -55,23 +56,38 @@ class SelfServiceApp extends Module {
     bind(ApplicationDependencies);
     bind(ApplicationStatus);
     bind(ApplicationPullRequest);
-   // bind(HighCharts.HighChartComponent);
+    // bind(HighCharts.HighChartComponent);
+    bind(HttpDefaultHeaders, toImplementation: MyDefaultHeaders);
     bind(TranslationConfig, toImplementation: TransConf.TranslationConfig);
     bind(NavigationService, toImplementation: NavService.NavigationService);
     bind(RouteInitializerFn, toImplementation: SelfServiceRouterInitializer);
     bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));
-
   }
-
 }
+
+
 
 void main() {
 
   Logger.root.level = Level.FINEST;
-  Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
+  Logger.root.onRecord.listen((LogRecord r) {
+    print(r.message);
+  });
   Binding.printInjectWarning = false;
-  applicationFactory()
-  .addModule(new SelfServiceApp())
-  .run();
+  applicationFactory().addModule(new SelfServiceApp()).run();
 
+
+
+}
+
+@Injectable()
+class MyDefaultHeaders extends HttpDefaultHeaders {
+  @override
+  setHeaders(Map<String, String> headers, String method) {
+    super.setHeaders(headers, method);
+    //if(method.toUpperCase() == 'POST') {
+    headers['authorization'] = window.localStorage['jwt'];
+
+    //}
+  }
 }
