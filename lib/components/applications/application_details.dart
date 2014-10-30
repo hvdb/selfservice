@@ -16,7 +16,7 @@ class ApplicationDetails {
   String _applicationId, _mergeFrom, notification, notificationType, splash;
 
   ApplicationDetails(this._http, this._stateService) {
-    _applicationId =_stateService.applicationId;
+    _applicationId =_stateService.applicationId.toLowerCase();
     _loadData();
   }
 

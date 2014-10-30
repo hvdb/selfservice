@@ -16,6 +16,8 @@ main() {
     xit('should have the correct navigation block', () {
       expect(element(by.id('navigationBlock')).isDisplayed()).toBe(true);
       expect(element(by.id('addApplication')).getText()).toBe('Add new application');
+
+
     });
 
   });

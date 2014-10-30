@@ -17,6 +17,8 @@ import 'package:self_service/components/applications/application_dependencies.da
 import 'package:self_service/components/applications/application_branchconfig.dart';
 import 'package:self_service/components/applications/application_builds.dart';
 
+import 'package:self_service/components/har/view_har.dart';
+
 import 'package:self_service/components/navigation/navigation.dart';
 import 'package:spectingular_dart/components/navigation/navigation_block.dart';
 import 'package:spectingular_dart/components/notification.dart' as Noti;
@@ -56,6 +58,7 @@ class SelfServiceApp extends Module {
     bind(ApplicationDependencies);
     bind(ApplicationStatus);
     bind(ApplicationPullRequest);
+    bind(ViewHar);
     // bind(HighCharts.HighChartComponent);
     bind(HttpDefaultHeaders, toImplementation: MyDefaultHeaders);
     bind(TranslationConfig, toImplementation: TransConf.TranslationConfig);
@@ -86,7 +89,14 @@ class MyDefaultHeaders extends HttpDefaultHeaders {
   setHeaders(Map<String, String> headers, String method) {
     super.setHeaders(headers, method);
     //if(method.toUpperCase() == 'POST') {
-    headers['authorization'] = window.localStorage['jwt'];
+
+    String jwt = window.localStorage['jwt'];
+    print('jwt $jwt');
+
+    headers['authorization'] = jwt;
+
+
+    print('method $method');
 
     //}
   }

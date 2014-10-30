@@ -5,6 +5,8 @@ dependencies:
     browser: any
     json_object: any
     web_components: any
+    paper_elements: ">=0.5.0 <0.6.0"
+    core_elements: any
     highcharts4dart: any
     jquery_for_pub: any
     bootstrap_for_pub: '>=3.3.0+1 <4.0.0'
@@ -15,8 +17,10 @@ dependencies:
 dependency_overrides:
     angular: '0.14.0'
     intl: '0.11.9'
-    web_components: '0.8.0'
+    web_components: '0.9.0'
     html5lib: '0.11.0+1'
+    args: 0.11.0
+    code_transformers: 0.2.3
 dev_dependencies:
     unittest: any
     protractor: '0.0.5'

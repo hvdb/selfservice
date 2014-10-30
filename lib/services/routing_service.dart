@@ -28,7 +28,8 @@ class RoutingService  {
           'view': spRoute(path: '/view', view: 'views/applications/view.html',neededUserLevel: 1),
           'config': spRoute(path: '/branches', view: 'views/applications/configure_application.html',neededUserLevel: 1),
           'quality': spRoute(path: '/quality', view: 'views/applications/configure_application.html',neededUserLevel: 1),
-          'builds': spRoute(path: '/builds', view: 'views/applications/builds.html',neededUserLevel: 1)
+          'builds': spRoute(path: '/builds', view: 'views/applications/builds.html',neededUserLevel: 1),
+          'har-view': spRoute(path: '/har/view', view: 'views/applications/view_har.html',neededUserLevel: 1),
       }, sectionName: 'app-administration',neededUserLevel: 1)
     };
   }
