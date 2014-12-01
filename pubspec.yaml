@@ -5,8 +5,8 @@ dependencies:
     browser: any
     json_object: any
     web_components: any
-    paper_elements: ">=0.5.0 <0.6.0"
-    core_elements: any
+    #paper_elements: ">=0.5.0 <0.6.0"
+    #core_elements: any
     highcharts4dart: any
     jquery_for_pub: any
     bootstrap_for_pub: '>=3.3.0+1 <4.0.0'

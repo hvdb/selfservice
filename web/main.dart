@@ -3,7 +3,6 @@ import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 import 'package:angular/routing/module.dart';
-import 'package:angular/application_factory.dart';
 
 
 import 'package:self_service/components/applications/application.dart';
@@ -16,8 +15,6 @@ import 'package:self_service/components/applications/application_pr.dart';
 import 'package:self_service/components/applications/application_dependencies.dart';
 import 'package:self_service/components/applications/application_branchconfig.dart';
 import 'package:self_service/components/applications/application_builds.dart';
-
-import 'package:self_service/components/har/view_har.dart';
 
 import 'package:self_service/components/navigation/navigation.dart';
 import 'package:spectingular_dart/components/navigation/navigation_block.dart';
@@ -58,7 +55,6 @@ class SelfServiceApp extends Module {
     bind(ApplicationDependencies);
     bind(ApplicationStatus);
     bind(ApplicationPullRequest);
-    bind(ViewHar);
     // bind(HighCharts.HighChartComponent);
     bind(HttpDefaultHeaders, toImplementation: MyDefaultHeaders);
     bind(TranslationConfig, toImplementation: TransConf.TranslationConfig);
@@ -72,14 +68,12 @@ class SelfServiceApp extends Module {
 
 void main() {
 
-  Logger.root.level = Level.FINEST;
+  Logger.root.level = Level.FINE;
   Logger.root.onRecord.listen((LogRecord r) {
     print(r.message);
   });
   Binding.printInjectWarning = false;
   applicationFactory().addModule(new SelfServiceApp()).run();
-
-
 
 }
 
@@ -88,16 +82,6 @@ class MyDefaultHeaders extends HttpDefaultHeaders {
   @override
   setHeaders(Map<String, String> headers, String method) {
     super.setHeaders(headers, method);
-    //if(method.toUpperCase() == 'POST') {
-
-    String jwt = window.localStorage['jwt'];
-    print('jwt $jwt');
-
-    headers['authorization'] = jwt;
-
-
-    print('method $method');
-
-    //}
+    headers['authorization'] = window.localStorage['jwt'];
   }
 }
