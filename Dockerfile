@@ -4,10 +4,13 @@
 
 
 FROM nginx
-MAINTAINER Henk vd Brink <henvandenbrink@gmail.com>
+MAINTAINER Henk vd Brink <henkvandenbrink@gmail.com>
 
-ADD build/web /usr/local/nginx/html
-ADD web/main.dart /usr/local/nginx/html/main.dart
+
+COPY build/web /usr/share/nginx/html
+COPY web/main.dart /usr/share/nginx/html/main.dart
+
+
 
 EXPOSE 80
 
