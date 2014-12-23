@@ -11,10 +11,16 @@ import 'package:self_service/components/applications/application_overview.dart';
 import 'package:self_service/components/applications/applications_list.dart';
 import 'package:self_service/components/applications/application_quality.dart';
 import 'package:self_service/components/applications/application_status.dart';
+
+import 'package:self_service/components/applications/build_details.dart';
+
+import 'package:self_service/components/applications/build_details_application.dart';
 import 'package:self_service/components/applications/application_pr.dart';
 import 'package:self_service/components/applications/application_dependencies.dart';
 import 'package:self_service/components/applications/application_branchconfig.dart';
 import 'package:self_service/components/applications/application_builds.dart';
+import 'package:self_service/components/applications/application_build.dart';
+
 
 import 'package:self_service/components/navigation/navigation.dart';
 import 'package:spectingular_dart/components/navigation/navigation_block.dart';
@@ -50,10 +56,13 @@ class SelfServiceApp extends Module {
     bind(TranslationService);
     bind(ApplicationBranchConfig);
     bind(ApplicationBuilds);
+    bind(ApplicationBuild);
     bind(ApplicationOverview);
     bind(ApplicationQuality);
     bind(ApplicationDependencies);
     bind(ApplicationStatus);
+    bind(BuildDetails);
+    bind(BuildDetailsApplication);
     bind(ApplicationPullRequest);
     // bind(HighCharts.HighChartComponent);
     bind(HttpDefaultHeaders, toImplementation: MyDefaultHeaders);

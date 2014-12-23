@@ -1,0 +1,54 @@
+
+<div>
+    <h1>Failed modules</h1>
+</div>
+<table class="table table-a table-hover-a">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>e2e</th>
+        <th>junit</th>
+        <th>coverage</th>
+        <th>jshint</th>
+        <th>Other</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="application in cmp.failed">
+    <tr>
+        <td><a href="#/build/details/application" ng-click="cmp.showDetails(application)">{{application.name}}</a></td>
+        <!--ng-class="{'danger' : build['status'] == 'error','success' : build['status'] == 'ok', 'warning':build['status'] == 'warning', 'info':build['status'] == 'building', 'info':build['status'] == 'pending'}"-->
+        <td ng-class="{'icon-red' : application.e2e.success == false}">{{application.e2e.success}}</td>
+        <td ng-class="{'icon-red' : application.junit.success == false}">{{application.junit.success}}</td>
+        <td ng-class="{'icon-red' : application.coverage.success == false}">{{application.coverage.success}}</td>
+        <td ng-class="{'icon-red' : application.jshint.success == false}">{{application.jshint.success}}</td>
+        <td ng-class="{'icon-red' : application.codeViolations.success == false}">{{application.codeViolations.success}}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+
+<div>
+    <h1>Passed modules</h1>
+</div>
+<table class="table table-a table-hover-a">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>lines</th>
+        <th>Branches</th>
+        <th>Functions</th>
+        <th>Statements</th>
+        <th>#e2e</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="application in cmp.passed">
+        <td>{{application.name}}</td>
+        <td>{{application.coverage.browsers[0].lines}}</td>
+        <td>{{application.coverage.browsers[0].branches}}</td>
+        <td>{{application.coverage.browsers[0].functions}}</td>
+        <td>{{application.coverage.browsers[0].statements}}</td>
+        <td>{{application.e2e.browsers[0].tests}}</td>
+    </tbody>
+</table>

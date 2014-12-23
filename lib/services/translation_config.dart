@@ -66,6 +66,16 @@ class TranslationConfig  {
     content['application-config-merge-prd'] = new TranslatedContent(nl_NL:'Merge applicatie naar PRODUCTIE');
 
 
+    content['navbar-label-build-details'] = new TranslatedContent(nl_NL:'Build details');
+    content['navigation-block-build-details-administration'] = new TranslatedContent(nl_NL:'Menu');
+    content['navigation-block-build-details-administration-build-details'] = new TranslatedContent(nl_NL:'Details');
+    content['navigation-block-build-details-administration-build-details-develop'] = new TranslatedContent(nl_NL:'Develop');
+    content['navigation-block-build-details-administration-build-details-test'] = new TranslatedContent(nl_NL:'Test');
+    content['navigation-block-build-details-administration-build-details-acceptance'] = new TranslatedContent(nl_NL:'Acceptatie');
+    content['navigation-block-build-details-administration-build-details-production'] = new TranslatedContent(nl_NL:'Productie');
+    content['navigation-block-build-details-administration-build-details-app'] = new TranslatedContent(nl_NL:'Applicatie details');
+
+
 
     //Application-details
     content['application-details-technical-error'] = new TranslatedContent(nl_NL:'Sorry er is iets fout gegaan met het ophalen van de data.');

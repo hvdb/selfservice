@@ -5,5 +5,7 @@ class StateService  {
 
   String applicationId;
 
+  Map applicationDetails;
+
 
 }

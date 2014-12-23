@@ -17,19 +17,15 @@ class RoutingService  {
 
     return {
           'root': spRoute(path: '/home', view: 'views/home.html', defaultRoute: true, neededUserLevel:-1),
-      'notallowed': spRoute(path: '/notallowed', view: 'views/security/notallowed.html', neededUserLevel:-1),
-      'login': spRoute(path: '/login', view: 'views/security/login.html', neededUserLevel:-1),
-      'logout': spRoute(path: '/logout', view: 'views/security/logout.html', neededUserLevel:-1),
-      'applications': spRoute(path: '/applications', mount: {
-          'list': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
-          'add': spRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 2)
-       }, neededUserLevel: 1, sectionName: 'apps-administration'),
-      'application': spRoute(path: '/application/:applicationId', mount: {
-          'view': spRoute(path: '/view', view: 'views/applications/view.html',neededUserLevel: 1),
-          'config': spRoute(path: '/branches', view: 'views/applications/configure_application.html',neededUserLevel: 1),
-          'quality': spRoute(path: '/quality', view: 'views/applications/configure_application.html',neededUserLevel: 1),
-          'builds': spRoute(path: '/builds', view: 'views/applications/builds.html',neededUserLevel: 1),
-      }, sectionName: 'app-administration',neededUserLevel: 1)
+        'build-details': spRoute(path: '/build/details', mount: {
+            'develop': spRoute(path: '/develop', view: 'views/builddetails/develop.html', neededUserLevel: -1),
+            'test': spRoute(path: '/test', view: 'views/builddetails/test.html', neededUserLevel: -1),
+            'acceptance': spRoute(path: '/acceptance', view: 'views/builddetails/acceptance.html', neededUserLevel: -1),
+            'production': spRoute(path: '/production', view: 'views/builddetails/production.html', neededUserLevel: -1),
+            'app': spRoute(path: '/application', view: 'views/builddetails/application.html', neededUserLevel: -1),
+
+    }, neededUserLevel: -1, sectionName: 'build-details-administration')
+
     };
   }
 
@@ -48,18 +44,19 @@ class RoutingService  {
   Function RoutePreEnterEventHandlerWrapper(RoutePreEnterEventHandler preEnter, int neededUserLevel) {
 
     void CustomRoutePreEnterEventHandler(RoutePreEnterEvent event) {
-      bool allowed = _authentication.isUserAllowed(neededUserLevel);
+     // bool allowed = _authentication.isUserAllowed(neededUserLevel);
+      bool allowed = true;
       event.allowEnter(new Future<bool>.value(allowed));
 
-      if(!allowed) {
-        if (_authentication.loggedIn) {
-          _log.fine('User logged in but not allowed. redirect to not allowed');
-          _router.go('notallowed',{});
-        } else {
-          _log.fine('User not logged-in, redirect to login page.');
-          _router.go('login',{});
-        }
-      }
+//      if(!allowed) {
+//        if (_authentication.loggedIn) {
+//          _log.fine('User logged in but not allowed. redirect to not allowed');
+//          _router.go('notallowed',{});
+//        } else {
+//          _log.fine('User not logged-in, redirect to login page.');
+//          _router.go('login',{});
+//        }
+//      }
 
     }
 
