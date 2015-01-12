@@ -29,7 +29,7 @@ class Authentication {
 
   login() {
 
-    _http.post('http://${Constants.getStashUrl()}/login', {"username":username,"password": password})
+    _http.post('http://${Constants.getDartBackedUrl()}/login', {"username":username,"password": password})
     .then((HttpResponse response) {
       String jwt = response.headers('authorization');
       Storage localStorage = window.localStorage;

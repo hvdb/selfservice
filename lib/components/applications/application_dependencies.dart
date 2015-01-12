@@ -23,11 +23,24 @@ class ApplicationDependencies {
   }
 
   _loadData() {
-    applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/dependencies/develop')
+    applicationId = _stateService.applicationId;
+    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$applicationId')
     .then((HttpResponse response) {
       config = response.data;
-      Map dependencies = config['dependencies'];
+      Map dependencies = new Map();
+
+      List nonStandard = config['nonStandardDependencies'];
+
+      print('nonstandard $nonStandard');
+      if (nonStandard != null && nonStandard.isNotEmpty) {
+        dependencies.addAll(nonStandard[0]['dependencies']);
+      }
+      List defaultDependencies = config['defaultDependencies'];
+      if (defaultDependencies.isNotEmpty) {
+        dependencies.addAll(defaultDependencies[0]['defaultDependencies']);
+        dependencies.addAll(defaultDependencies[0]['defaultDevDependencies']);
+      }
+
       for (var key in dependencies.keys) {
         deps.add({"name":"$key", "value":dependencies['$key']});
       }

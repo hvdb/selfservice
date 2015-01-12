@@ -4,6 +4,8 @@
     <!-- Default panel contents -->
     <form id="branchConfigForm" name="branchConfigForm" >
     <!-- Table -->
+        <h1>Currently read only</h1>
+
     <table class="table table-b" >
         <thead>
         <tr>
@@ -25,7 +27,7 @@
     </table>
 
     <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && (newApplicationForm['applicationName'].dirty &&newApplicationForm['repoAdmin'].dirty)" type="'error'" sp-translation identifier="'validation-messages'"></sp-notification>
-    <input id="submitButton" class="btn btn-primary" type="submit" ng-click="conf.save()"/>
+
     </form>
 </div>
 

@@ -20,9 +20,6 @@ class ApplicationBuilds {
   @NgTwoWay('showEnvironmentStatus')
   set showEnvStatus(bool boolean) {
      showEnvironmentStatus = boolean;
-
-
-
   }
 
 
@@ -37,10 +34,14 @@ class ApplicationBuilds {
 
 
   _loadData() {
-    applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/build/information/application/$applicationId')
+    applicationId = _stateService.applicationId;
+    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$applicationId/buildinformation')
     .then((HttpResponse response) {
       results = response.data;
+      if (results.isEmpty) {
+        notification = 'no-data';
+        notificationType = 'warning';
+      }
     })
     .catchError((e) {
       notification = 'technical-error';

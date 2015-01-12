@@ -5,19 +5,14 @@
 <table class="table table-a table-hover-a">
     <thead>
     <tr>
-        <th>Type</th>
         <th>Name</th>
+        <th>Team</th>
     </tr>
     </thead>
     <tbody ng-repeat="application in cmp.apps">
     <tr>
-        <td>{{application.type}}</td>
-        <td><a href="#/application/{{application.name}}/view">{{application.name}}</a></td>
+        <td><a href="#/application/{{application.applicationId}}/view">{{application.applicationId}}</a></td>
+        <td>{{application.teamId}}</td>
     </tr>
     </tbody>
 </table>
-
-<ul class="pager pager-default">
-    <li class="pager-item"><button ng-disabled="cmp.disablePrevious" ng-click="cmp.getPreviousPage()" class="btn btn-secondary">Previous</button></li>
-    <li class="pager-item"><button ng-disabled="cmp.disableNext" ng-click="cmp.getNextPage()" class="btn btn-primary">Next</button></li>
-</ul>

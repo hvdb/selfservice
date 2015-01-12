@@ -21,19 +21,16 @@ class ApplicationPullRequest {
 
   _loadData() {
     _applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$_applicationId/pullrequests')
+    _http.get('http://${Constants.getDartBackedUrl()}/application/$_applicationId/pullrequests')
     .then((HttpResponse response) {
       pullRequests = response.data;
       print('pr found');
     })
     .catchError((e) {
-      if (e.toString().contains('404')) {
         notification = 'application-pull-requests-not-found';
         notificationType = 'info';
-      } else {
         notification = 'technical-error';
         notificationType = 'error';
-      }
     });
   }
 

@@ -1,0 +1,87 @@
+<sp-notification id="statusNotification" ng-if="details.notification != null" type="details.notificationType" ><span sp-translation identifier="details.notification"></span></sp-notification>
+
+
+<div ng-if="details.notificationType != 'error'" class="container-fluid">
+
+    <div class="row">
+        <h1>{{details.team.teamName}}</h1>
+        </div>
+
+    <div class="row">
+
+    <form id="updateTeamForm" name="updateTeamForm" >
+        <div class="col-lg-12">
+            <div sp-translation identifier="'update-team-title'"></div>
+        </div>
+        <br/>
+
+        <div class="col-lg-4">
+            <table class="table table-b" >
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email address</th>
+                    <th>Corp Key</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody ng-repeat="member in details.team.teamMembers">
+                <tr>
+                    <td>{{member.name}}</td>
+                    <td>{{member.emailAddress}}</td>
+                    <td>{{member.corpKey}}</td>
+                    <td>{{member.role}}</td>
+                    <td><a  ng-click="details.removeMember($index)">X</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+
+
+                <label id="nameLabel" for="name" class="col-lg-4 legend-label" sp-translation identifier="'new-teammember-name-label'"></label>
+                <div class="col-lg-8">
+                    <input id="name" name="name" type="text" ng-model="details.name" ng-required="true" />
+
+                    <br/>
+                    <div id="nameRequiredMessage" ng-if="updateTeamForm['name'].hasErrorState('ng-required') && updateTeamForm['name'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+                <br/>
+                <label id="emailAddressLabel" for="name" class="col-lg-4 legend-label" sp-translation identifier="'new-teammember-emailAddress-label'"></label>
+                <div class="col-lg-8">
+                    <input id="emailAddress" name="emailAddress" type="text" ng-model="details.emailAddress" ng-required="true" />
+
+                    <br/>
+                    <div id="emailAddressMessage" ng-if="updateTeamForm['emailAddress'].hasErrorState('ng-required') && updateTeamForm['emailAddress'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+                <br/>
+                <label id="corpKeyLabel" for="corpKey" class="col-lg-4 legend-label" sp-translation identifier="'new-teammember-corpKey-label'"></label>
+                <div class="col-lg-8">
+                    <input id="corpKey" name="corpKey" type="text" ng-model="details.corpKey" ng-required="true" />
+
+                    <br/>
+                    <div id="corpKeyRequiredMessage" ng-if="updateTeamForm['corpKey'].hasErrorState('ng-required') && updateTeamForm['corpKey'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+
+                <br/>
+                <button ng-click="details.addMember()"   ng-disabled="updateTeamForm.invalid" class="btn btn-primary" >Add</button>
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <button id="submitButton" class="btn btn-primary" type="submit"  ng-click="details.updateTeam()">Save</button>
+
+    </form>
+
+
+    </div>
+</div>

@@ -4,6 +4,6 @@ import 'package:angular/angular.dart';
 class StateService  {
 
   String applicationId;
-
+  String teamId;
 
 }

@@ -53,7 +53,8 @@ class TranslationConfig  {
     content['navigation-block-apps-administration-applications-add'] = new TranslatedContent(nl_NL:'Toevoegen');
 
 
-    content['navigation-block-app-administration-application-view'] = new TranslatedContent(nl_NL:'Details');
+    content['navigation-block-app-administration-application-view'] = new TranslatedContent(nl_NL:'Overview');
+    content['navigation-block-app-administration-application-details'] = new TranslatedContent(nl_NL:'Details');
     content['navigation-block-app-administration-application'] = new TranslatedContent(nl_NL:'Applicatie');
     content['navigation-block-app-administration-application-config'] = new TranslatedContent(nl_NL:'Branch config');
     content['navigation-block-app-administration-application-quality'] = new TranslatedContent(nl_NL:'Kwaliteit');

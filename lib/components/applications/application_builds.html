@@ -19,12 +19,12 @@
 
 
         <tr ng-class="{'danger' : build['status'] == 'error','success' : build['status'] == 'ok', 'warning':build['status'] == 'warning', 'info':build['status'] == 'building', 'info':build['status'] == 'pending'}">
-            <td ng-if="!builds.showEnvironmentStatus"><a href="#/application/{{build['applicationId']}}/build/{{build['buildIndicator']}}">{{build['buildIndicator'] | limitTo:7}}</a></td>
+            <td ng-if="!builds.showEnvironmentStatus"><a href="#/application/{{build['applicationId']}}/build/{{build['buildIndicator']}}">{{build['id'] | limitTo:7}}</a></td>
             <td ng-if="!builds.showEnvironmentStatus">{{build['triggerdFromBranch']}}</td>
             <td ng-if="!builds.showEnvironmentStatus">{{build['commitHash'] | limitTo:7}}</td>
             <td ng-if="builds.showEnvironmentStatus"><a href="#/application/{{build['applicationId']}}/build/{{build['buildIndicator']}}">{{build['environment']}}</a></td>
             <td ng-if="!builds.showEnvironmentStatus">{{build['environment']}}</td>
-            <td ng-if="!builds.showEnvironmentStatus">{{build['status']}}</td>
+            <td ng-if="!builds.showEnvironmentStatus">{{build['status']['buildStatus']}}</td>
         </tr>
         </tbody>
     </table>

@@ -26,14 +26,14 @@ class ApplicationBranchConfig {
 
 
   _loadData() {
-    applicationId = _stateService.applicationId.toLowerCase();
-    _http.get('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig')
+    applicationId = _stateService.applicationId;
+    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$applicationId')
     .then((HttpResponse response) {
       currentConfig = response.data;
-      develop = currentConfig['develop'];
-      test = currentConfig['test'];
-      acceptance = currentConfig['acceptatie'];
-      production = currentConfig['productie'];
+      develop = currentConfig['branchConfiguration']['develop'];
+      test = currentConfig['branchConfiguration']['test'];
+      acceptance = currentConfig['branchConfiguration']['acceptatie'];
+      production = currentConfig['branchConfiguration']['productie'];
     })
     .catchError((e) {
       notification = 'technical-error';
@@ -41,25 +41,7 @@ class ApplicationBranchConfig {
     });
   }
 
-  save() {
-    JsonObject config = new JsonObject();
-    config.applicationId = applicationId;
-    config.develop = develop;
-    config.test = test;
-    config.acceptatie = acceptance;
-    config.productie = production;
 
-    _http.post('http://${Constants.getStashUrl()}/application/$applicationId/branchconfig', JSON.encode(config)).then((HttpResponse response) {
-      print('ok');
-      notification = 'application-branch-config-notification-post-success';
-      notificationType = 'success';
-    }).catchError((e) {
-      print('error');
-      notification = 'technical-error';
-      notificationType = 'error';
-    });
-
-  }
 
 
 }
