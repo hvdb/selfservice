@@ -3,6 +3,8 @@ import 'package:angular/angular.dart';
 import '../constants.dart';
 import "package:json_object/json_object.dart";
 import 'dart:async';
+import 'package:spectingular_dart/services/authentication.dart';
+
 
 
 import 'package:self_service/services/state_service.dart';
@@ -15,13 +17,14 @@ import 'package:self_service/services/state_service.dart';
 class TeamDetails {
 
   final Http _http;
-  JsonObject team;
+  List members;
+  AuthenticationService _authenticationService;
   StateService _stateService;
-  String _teamId, notification, notificationType,  name, emailAddress, corpKey;
+  String _teamId, notification, notificationType,  name, emailAddress, corpKey, teamName;
   String role = "1";
 
 
-  TeamDetails(RouteProvider routeProvider, this._http,this._stateService) {
+  TeamDetails(RouteProvider routeProvider, this._http,this._stateService, this._authenticationService) {
     String teamId = routeProvider.parameters['teamId'];
 
     if (teamId != null && teamId != ':teamId') {
@@ -31,26 +34,26 @@ class TeamDetails {
       _teamId = _stateService.teamId;
     }
 
-    _loadData();
+    if (_authenticationService.loggedInUserLevel < 90 && _stateService.teamId != _teamId) {
+        notification = 'not-allowed';
+        notificationType = 'error';
+    }
 
+    _loadData();
 
   }
 
 
-  removeMember(String index) {
+  removeMember(String id) {
+    _http.delete('http://${Constants.getJavaBackendUrl()}/teammembers/$id').then((HttpResponse response) {
+      notification = 'delete-member-notification-success';
+      notificationType = 'success';
+      _loadData();
+    }).catchError((e) {
+      notification = 'delete-member-notification-error';
+      notificationType = 'error';
+    });
 
-//    _http.delete('http://${Constants.getJavaBackendUrl()}/teamMembers', team).then((HttpResponse response) {
-//      notification = 'update-team-notification-success';
-//      notificationType = 'success';
-//
-//    }).catchError((e) {
-//      notification = 'update-team-notification-error';
-//      notificationType = 'error';
-//    });
-
-
-    //Remove from database. Fetch data again.
-    _loadData();
   }
 
   addMember() {
@@ -60,53 +63,46 @@ class TeamDetails {
     teamMember.emailAddress = emailAddress;
     teamMember.corpKey = corpKey;
     teamMember.role = role;
+    teamMember.teamId = _teamId;
 
-    if (team["teamMembers"] == null) {
-      team["teamMembers"] = new List();
-    }
-    //TODO save to database.
-    _http.put('http://${Constants.getJavaBackendUrl()}/contactinformation', team).then((HttpResponse response) {
-      teamMember = response.data;
+    print('add $teamMember');
+
+    _http.post('http://${Constants.getJavaBackendUrl()}/teammembers', teamMember).then((HttpResponse response) {
+      _loadData();
     }).catchError((e) {
       notification = 'update-team-notification-error';
       notificationType = 'error';
     });
 
-
-
-    team["teamMembers"].add(teamMember);
-    //fetch data again
-    _loadData();
-
   }
 
 
-  updateTeam() {
 
-    _http.put('http://${Constants.getJavaBackendUrl()}/contactinformation', team).then((HttpResponse response) {
-      notification = 'update-team-notification-success';
-      notificationType = 'success';
-
-    }).catchError((e) {
-      notification = 'update-team-notification-error';
-      notificationType = 'error';
-    });
-
-
-  }
 
   void _loadData() {
+    _http.get('http://${Constants.getJavaBackendUrl()}/teammembers/team/$_teamId')
+    .then((HttpResponse response) {
+      members = response.data;
+      _getTeamName();
+    })
+    .catchError((e) {
+      notification = 'get-team-notification-error';
+      notificationType = 'error';
+    });
+  }
+
+
+
+  void _getTeamName() {
     _http.get('http://${Constants.getJavaBackendUrl()}/contactinformation/$_teamId')
     .then((HttpResponse response) {
-      team = response.data;
-      print("team $team ");
+      teamName = response.data["teamName"];
 
     })
     .catchError((e) {
-      notification = 'application-details-technical-error';
+      notification = 'get-team-notification-error';
       notificationType = 'error';
     });
   }
-
 
 }

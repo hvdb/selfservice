@@ -2,89 +2,44 @@
 
 
 
+<div class="panel panel-bordered panel-shadow-a" ng-if="details.notificationType != 'error'" >
+    <div class="panel-heading"><h1 class="panel-title panel-title-primary">Details van de applicatie:</h1></div>
+    <div class="panel-body">
 
-
-<div ng-if="details.notificationType != 'error' && !details.showAll" >
-
-    <table class="table table-b" >
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Value</th>
-        </tr>
-        </thead>
+    <table class="table table-b">
 
         <tbody>
-        <tr>
-            <td>Applicatio name</td>
-            <td>{{details.application.applicationId}}</td>
-        </tr>
-        <tr>
-            <td>Clone Url:</td>
-            <td>{{details.application.gitUrl}}</td>
-        </tr>
-        <tr>
-            <td>Description</td>
-            <td>{{details.application.applicationDescription}}</td>
-        </tr>
-        <tr>
-            <td>Target platforms</td>
-            <td>{{details.application.targetPlatforms}}</td>
-        </tr>
-        <tr>
-            <td>TeamId</td>
-            <td><a href="#/teams/{{details.application.teamId}}">{{details.application.teamId}}</a></td>
-        </tr>
-        </tbody>
-    </table>
-    <form name="mergeBranch" >
-        <button id="submitMergeTest" class="btn btn-primary" ng-click="details.mergeTo('master')" sp-translation identifier="'application-config-merge-test'"></button>
-        <button id="submitMergeAcc" class="btn btn-primary btn-warning" ng-click="details.mergeTo('release-a')" sp-translation identifier="'application-config-merge-acc'"></button>
-        <!--<button id="submitMergePrd" class="btn btn-primary btn-danger" ng-click="details.mergeTo('release-prd')" sp-translation identifier="'application-config-merge-prd'"></button> -->
-    </form>
-</div>
-
-
-<div ng-if="details.notificationType != 'error' && details.showAll" class="container-fluid">
-    <div class="row panel panel-bordered panel-shadow-a">
-    <div class="col-lg-8">
-
-        <h1>Application details</h1>
-
-        <table class="table table-b" >
-            <thead>
             <tr>
-                <th>Name</th>
-                <th>Value</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td sp-translation identifier="'application-details-name'"></td>
+                <td sp-translation identifier="'application-details-applicationId'"></td>
                 <td>{{details.application.applicationId}}</td>
             </tr>
             <tr>
-                <td>Clone Url:</td>
+                <td sp-translation identifier="'application-details-cloneUrl'"></td>
                 <td>{{details.application.gitUrl}}</td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td sp-translation identifier="'application-details-description'"></td>
                 <td>{{details.application.applicationDescription}}</td>
             </tr>
             <tr>
-                <td>Target platforms</td>
+                <td sp-translation identifier="'application-details-platforms'"></td>
                 <td>{{details.application.targetPlatforms}}</td>
             </tr>
             <tr>
-                <td>TeamId</td>
-                <td><a href="#/teams/{{details.application.teamId}}">{{details.application.teamId}}</a></td>
+                <td sp-translation identifier="'application-details-teamId'"></td>
+                <td><a href="#/teams/{{details.application.teamId}}">{{details.teamName}}</a></td>
             </tr>
-            </tbody>
-        </table>
+        </tbody>
 
-    </div>
-    </div>
+    </table>
+    <!--<form name="mergeBranch" >-->
+        <!--<button id="submitMergeTest" class="btn btn-primary" ng-click="details.mergeTo('master')" sp-translation identifier="'application-config-merge-test'"></button>-->
+        <!--<button id="submitMergeAcc" class="btn btn-primary btn-warning" ng-click="details.mergeTo('release-a')" sp-translation identifier="'application-config-merge-acc'"></button>-->
+        <!--&lt;!&ndash;<button id="submitMergePrd" class="btn btn-primary btn-danger" ng-click="details.mergeTo('release-prd')" sp-translation identifier="'application-config-merge-prd'"></button> &ndash;&gt;-->
+    <!--</form>-->
+
+    <div ng-if="details.showAll">
+
     <div class="row">
         <div sp-translation identifier="'update-application-targetplatorms'"></div>
         <div  ng-repeat="platform in details.platform">
@@ -95,17 +50,17 @@
                 </label>
             </div>
         </div>
-
+        <button id="submitButton" class="btn btn-primary" type="submit"  ng-click="details.updateRepo()" sp-translation identifier="'update-application-save'"></button>
     </div>
 
     <div class="row panel panel-bordered panel-shadow-a">
 
     <form id="updateApplicationForm" name="updateApplicationForm" ng-if="details.application.notification == null"  >
         <div class="col-lg-12">
-            <div sp-translation identifier="'update-application-title'"></div>
+            <h3 sp-translation identifier="'update-application-title'"></h3>
 
             <select name="dependencyEnv" id="dependencyEnv" ng-model="details.dependencyEnv" ng-change="details.changedEnvironment()">
-                <option ng-repeat="env in details.dependencyEnvironments"  value="{{$index}}" >{{env}}</option>
+                <option ng-repeat="env in details.dependencyEnvironments"  value="{{env}}" >{{env}}</option>
             </select>
         </div>
         <br/>
@@ -114,10 +69,10 @@
             <table class="table table-b" >
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Url</th>
-                    <th>Resolution</th>
-                    <th>Actions</th>
+                    <th sp-translation identifier="'application-dependencies-name'"></th>
+                    <th  sp-translation identifier="'application-dependencies-url'"></th>
+                    <th  sp-translation identifier="'application-dependencies-resolution'"></th>
+                    <th  sp-translation identifier="'application-dependencies-actions'"></th>
                 </tr>
                 </thead>
 
@@ -126,7 +81,7 @@
                     <td>{{dependency.name}}</td>
                     <td>{{dependency.url}}</td>
                     <td>{{dependency.resolution}}</td>
-                    <td><a ng-click="details.removeDependency(dependency.name)">X</a></td>
+                    <td><a ng-click="details.removeDependency(dependency.id)">X</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -135,21 +90,43 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <label id="dependencyNameLabel" for="dependencyName" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-name-label'">   <input id="dependencyName"  type="text" ng-model="details.dependencyName" ng-required="true"  /></label>
-                <label id="dependencyUrlLabel" for="dependencyUrl" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-url-label'">  <input id="dependencyUrl"  type="text" ng-model="details.dependencyUrl" ng-required="true" /></label>
-                <label id="dependencyResolutionlLabel" for="dependencyResolution" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-resolution-label'">  <input id="dependencyResolution"  type="text" ng-model="details.dependencyResolution" ng-required="true" /></label>
+                <label id="dependencyNameLabel" for="dependencyName" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-name-label'"></label>
+                <div class="col-lg-8">
+                    <input id="dependencyName"  type="text" ng-model="details.dependencyName" ng-required="true"  />
+                    <div id="dependencyNameRequiredMessage" ng-if="updateApplicationForm['dependencyName'].hasErrorState('ng-required') && updateApplicationForm['dependencyName'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
                 <br/>
-                <div id="dependency" ng-if="updateApplicationForm.hasErrorState('ng-required') && updateApplicationForm.dirty" sp-translation identifier="'validation-required'"></div>
                 <br/>
-                <button ng-click="details.addDependency()"   ng-disabled="updateApplicationForm.invalid" class="btn btn-primary" >Add</button>
+                <label id="dependencyUrlLabel" for="dependencyUrl" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-url-label'"></label>
+                <div class="col-lg-8">
+                    <input id="dependencyUrl"  type="text" ng-model="details.dependencyUrl" ng-required="true" />
+                    <div id="dependencyUrlRequiredMessage" ng-if="updateApplicationForm['dependencyUrl'].hasErrorState('ng-required') && updateApplicationForm['dependencyUrl'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+                <br/>
+                <label id="dependencyResolutionlLabel" for="dependencyResolution" class="col-lg-4 legend-label" sp-translation identifier="'add-customdependency-resolution-label'"></label>
+                <div class="col-lg-8">
+                    <input id="dependencyResolution"  type="text" ng-model="details.dependencyResolution" ng-required="true" />
+                    <div id="dependencyResolutionRequiredMessage" ng-if="updateApplicationForm['dependencyResolution'].hasErrorState('ng-required') && updateApplicationForm['dependencyResolution'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+
+                <br/>
+                <button ng-click="details.addDependency()"   ng-disabled="updateApplicationForm.invalid" class="btn btn-primary" sp-translation identifier="'update-application-members-add'" ></button>
             </div>
         </div>
         <br/>
         <br/>
 
-        <button id="submitButton" class="btn btn-primary" type="submit"  ng-click="details.updateRepo()">Save</button>
+
 
     </form>
+
+
+    </div>
+    </div>
+
+
 
 
     </div>

@@ -10,6 +10,7 @@ dependencies:
     highcharts4dart: any
     jquery_for_pub: any
     bootstrap_for_pub: '>=3.3.0+1 <4.0.0'
+    dart_jwt: ">=0.1.2 <0.2.0"
     spectingular_dart:
         git:
           url: https://github.com/hvdb/Spectingular.Dart.git

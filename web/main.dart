@@ -17,6 +17,8 @@ import 'package:self_service/components/applications/application_branchconfig.da
 import 'package:self_service/components/applications/application_builds.dart';
 import 'package:self_service/components/teams/teams_list.dart';
 import 'package:self_service/components/teams/team_details.dart';
+import 'package:self_service/components/teams/add_team.dart';
+
 
 
 import 'package:self_service/components/navigation/navigation.dart';
@@ -60,6 +62,7 @@ class SelfServiceApp extends Module {
     bind(ApplicationPullRequest);
     bind(TeamsList);
     bind(TeamDetails);
+    bind(AddTeam);
     // bind(HighCharts.HighChartComponent);
     bind(HttpDefaultHeaders, toImplementation: MyDefaultHeaders);
     bind(TranslationConfig, toImplementation: TransConf.TranslationConfig);

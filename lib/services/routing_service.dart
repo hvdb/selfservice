@@ -22,18 +22,18 @@ class RoutingService  {
       'logout': spRoute(path: '/logout', view: 'views/security/logout.html', neededUserLevel:-1),
       'applications': spRoute(path: '/applications', mount: {
           'list': spRoute(path: '/list', view: 'views/applications/index.html', neededUserLevel: 1),
-          'add': spRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 2)
+          'add': spRoute(path: '/add', view: 'views/applications/new.html', neededUserLevel: 70)
        }, neededUserLevel: 1, sectionName: 'apps-administration'),
       'application': spRoute(path: '/application/:applicationId', mount: {
           'view': spRoute(path: '/view', view: 'views/applications/view.html',neededUserLevel: 1),
           'details': spRoute(path: '/details', view: 'views/applications/details.html',neededUserLevel: 1),
-          'quality': spRoute(path: '/quality', view: 'views/applications/configure_application.html',neededUserLevel: 1),
-          'builds': spRoute(path: '/builds', view: 'views/applications/builds.html',neededUserLevel: 1),
+         // 'quality': spRoute(path: '/quality', view: 'views/applications/configure_application.html',neededUserLevel: 1),
+         // 'builds': spRoute(path: '/builds', view: 'views/applications/builds.html',neededUserLevel: 1),
       }, sectionName: 'app-administration',neededUserLevel: 1),
         'teams': spRoute(path: '/teams', mount: {
             'list': spRoute(path: '/list', view: 'views/teams/index.html', neededUserLevel: 1),
-            'add': spRoute(path: '/add', view: 'views/teams/new.html', neededUserLevel: 10),
-            'details': spRoute(path: '/:teamId', view: 'views/teams/details.html', neededUserLevel: 10)
+            'add': spRoute(path: '/add', view: 'views/teams/new.html', neededUserLevel: 70),
+            'details': spRoute(path: '/:teamId', view: 'views/teams/details.html', neededUserLevel: 1)
         }, neededUserLevel: 1, sectionName: 'team-administration')
     };
   }

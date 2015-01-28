@@ -8,14 +8,15 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/home" sp-translation identifier="'navbar-label-home'"></a>
+            <div class="navbar-right" sp-translation identifier="'navbar-header-welcome'" ng-if="navigation.authService.loggedIn" >{{navigation.authService.loggedInUserFullName}}</div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-application">
             <ul class="nav navbar-nav">
                 <li class="active"><a id="applications" href="#/applications/list" sp-translation identifier="'navbar-label-applications'"></a></li>
-                <li></li>
-                <li class="active"><a id="teams" href="#/teams/list" sp-translation identifier="'navbar-label-teams'"></a></li>
+                <li class="padding-right-10"></li>
+                <li class="" ng-if="navigation.authService.loggedIn"><a id="teams" href="#/teams/list" sp-translation identifier="'navbar-label-teams'"></a></li>
             </ul>
             <!--<form class="navbar-form navbar-left" role="search">
                 <div class="form-group">

@@ -1,20 +1,18 @@
 
 <div>
-    <h1>Teams list</h1>
+    <h1 sp-translation identifier="'teams-list-title'"></h1>
 </div>
 <table class="table table-a table-hover-a">
     <thead>
     <tr>
-        <th>TeamId</th>
-        <th>Team Name</th>
-        <th>Members</th>
+        <th sp-translation identifier="'teams-list-teamId'"></th>
+        <th sp-translation identifier="'teams-list-teamName'"></th>
     </tr>
     </thead>
     <tbody ng-repeat="team in teams.teams">
     <tr>
         <td><a href="#/teams/{{team.teamId}}">{{team.teamId}}</a></td>
         <td>{{team.teamName}}</td>
-        <td>{{team.teamMembers.length}}</td>
     </tr>
     </tbody>
 </table>

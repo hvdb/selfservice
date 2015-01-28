@@ -4,7 +4,7 @@
 <div ng-if="details.notificationType != 'error'" class="container-fluid">
 
     <div class="row">
-        <h1>{{details.team.teamName}}</h1>
+        <h1>{{details.teamName}}</h1>
         </div>
 
     <div class="row">
@@ -19,21 +19,21 @@
             <table class="table table-b" >
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email address</th>
-                    <th>Corp Key</th>
-                    <th>Role</th>
-                    <th>Actions</th>
+                    <th sp-translation identifier="'team-member-name'"></th>
+                    <th sp-translation identifier="'team-member-email'"></th>
+                    <th sp-translation identifier="'team-member-key'"></th>
+                    <th sp-translation identifier="'team-member-role'"></th>
+                    <th sp-translation identifier="'team-member-actions'"></th>
                 </tr>
                 </thead>
 
-                <tbody ng-repeat="member in details.team.teamMembers">
+                <tbody ng-repeat="member in details.members">
                 <tr>
                     <td>{{member.name}}</td>
                     <td>{{member.emailAddress}}</td>
                     <td>{{member.corpKey}}</td>
                     <td>{{member.role}}</td>
-                    <td><a  ng-click="details.removeMember($index)">X</a></td>
+                    <td><a ng-click="details.removeMember(member.id)">X</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -72,13 +72,11 @@
                 <br/>
 
                 <br/>
-                <button ng-click="details.addMember()"   ng-disabled="updateTeamForm.invalid" class="btn btn-primary" >Add</button>
+                <button ng-click="details.addMember()"   ng-disabled="updateTeamForm.invalid" class="btn btn-primary" sp-translation identifier="'team-member-add'"></button>
             </div>
         </div>
         <br/>
         <br/>
-
-        <button id="submitButton" class="btn btn-primary" type="submit"  ng-click="details.updateTeam()">Save</button>
 
     </form>
 

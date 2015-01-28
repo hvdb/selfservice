@@ -24,26 +24,19 @@ class ApplicationDependencies {
 
   _loadData() {
     applicationId = _stateService.applicationId;
-    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$applicationId')
+    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$applicationId/dependencies/develop')
     .then((HttpResponse response) {
-      config = response.data;
-      Map dependencies = new Map();
+      deps.addAll(response.data);
 
-      List nonStandard = config['nonStandardDependencies'];
+    })
+    .catchError((e) {
+      notification = 'technical-error';
+      notificationType = 'error';
+    });
 
-      print('nonstandard $nonStandard');
-      if (nonStandard != null && nonStandard.isNotEmpty) {
-        dependencies.addAll(nonStandard[0]['dependencies']);
-      }
-      List defaultDependencies = config['defaultDependencies'];
-      if (defaultDependencies.isNotEmpty) {
-        dependencies.addAll(defaultDependencies[0]['defaultDependencies']);
-        dependencies.addAll(defaultDependencies[0]['defaultDevDependencies']);
-      }
-
-      for (var key in dependencies.keys) {
-        deps.add({"name":"$key", "value":dependencies['$key']});
-      }
+    _http.get('http://${Constants.getJavaBackendUrl()}/default/dependencies/develop')
+    .then((HttpResponse response) {
+      deps.addAll(response.data);
 
     })
     .catchError((e) {

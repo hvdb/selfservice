@@ -3,6 +3,7 @@ import 'package:angular/angular.dart';
 import '../constants.dart';
 import "package:json_object/json_object.dart";
 import 'dart:async';
+import 'dart:convert';
 
 
 import 'package:self_service/services/state_service.dart';
@@ -17,8 +18,8 @@ class ApplicationDetails {
   final Http _http;
   JsonObject application;
   StateService _stateService;
-  String _applicationId, _mergeFrom, notification, notificationType, splash, dependencyName, dependencyUrl, dependencyResolution, dependencyEnvironment;
-  String dependencyEnv = "0";
+  String _applicationId, _mergeFrom, notification, notificationType, splash, dependencyName, dependencyUrl, dependencyResolution, dependencyEnvironment, teamName;
+  String dependencyEnv = "develop";
 
   List dependencyEnvironments = new List();
 
@@ -49,34 +50,64 @@ class ApplicationDetails {
   }
 
 
-  removeDependency(Object dependency) {
-    application["nonStandardDependencies"][int.parse(dependencyEnv)]["dependencies"].remove(dependency);
-    loadDependencyList();
+  removeDependency(String id) {
+
+    _http.delete('http://${Constants.getJavaBackendUrl()}/applications/$_applicationId/dependencies/$id').then((HttpResponse response) {
+      notification = 'update-application-notification-module-geupdate';
+      notificationType = 'success';
+
+    }).catchError((e) {
+      notification = 'update-application-notification-module-error';
+      notificationType = 'error';
+    });
+
+    _loadDependencyList();
   }
 
 
-  loadDependencyList() {
+  _loadDependencyList() {
     dependencyList = new List();
-    Map dependencies = application["nonStandardDependencies"][int.parse(dependencyEnv)]["dependencies"];
-    for (var key in dependencies.keys) {
-      dependencyList.add({"name":"$key", "url":dependencies['$key'], "resolution" : dependencyResolution});
-    }
+
+    _http.get('http://${Constants.getJavaBackendUrl()}/applications/$_applicationId/dependencies/$dependencyEnv')
+    .then((HttpResponse response) {
+      dependencyList = response.data;
+    })
+    .catchError((e) {
+      notification = 'technical-error';
+      notificationType = 'error';
+    });
 
 
   }
 
 
   addDependency() {
-    application["nonStandardDependencies"][int.parse(dependencyEnv)]["dependencies"][dependencyName] =  dependencyUrl;
-    application["nonStandardDependencies"][int.parse(dependencyEnv)]["resolutions"][dependencyName] =  dependencyResolution;
 
-    loadDependencyList();
+    JsonObject dependency = new JsonObject();
+    dependency.name = dependencyName;
+    dependency.url = dependencyUrl;
+    dependency.resolution = dependencyUrl;
+    dependency.environment = dependencyEnv;
+    dependency.applicationId = _applicationId;
+    dependency.dev = false;
+
+    _http.post('http://${Constants.getJavaBackendUrl()}/applications/$_applicationId/dependencies', dependency).then((HttpResponse response) {
+      notification = 'update-application-notification-module-geupdate';
+      notificationType = 'success';
+
+    }).catchError((e) {
+      notification = 'update-application-notification-module-error';
+      notificationType = 'error';
+    });
+
+
+    _loadDependencyList();
   }
 
   changedEnvironment() {
     new Future(() {
 
-      loadDependencyList();
+      _loadDependencyList();
     });
     //load different dependencies.
 
@@ -105,15 +136,32 @@ class ApplicationDetails {
     _http.get('http://${Constants.getJavaBackendUrl()}/applications/$_applicationId')
     .then((HttpResponse response) {
       application = response.data;
-      print('data $application');
-      loadDependencyList();
+      _loadDependencyList();
       setSelectedTargetPlatforms();
+      _getTeamName();
     })
     .catchError((e) {
-      notification = 'application-details-technical-error';
+      notification = 'technical-error';
       notificationType = 'error';
     });
   }
+
+
+  void _getTeamName() {
+    _http.get('http://${Constants.getJavaBackendUrl()}/contactinformation/${application["teamId"]}')
+    .then((HttpResponse response) {
+      teamName = response.data["teamName"];
+
+    })
+    .catchError((e) {
+      notification = 'technical-error';
+      notificationType = 'error';
+    });
+  }
+
+
+  //OLD! need to fix.
+
 
   mergeTo(String branchToMergeTo) {
 
@@ -153,10 +201,8 @@ class ApplicationDetails {
     List currectPlatforms = application["targetPlatforms"];
 
     for (final current in currectPlatforms) {
-      print('current $current');
       for (final Map target in platform) {
         if (current == target["name"]) {
-          print('same ');
           target["selected"] = true;
         }
       }

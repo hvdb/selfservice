@@ -37,15 +37,11 @@ class Applications {
   fetchTeams() {
     _http.get('http://${Constants.getJavaBackendUrl()}/contactinformation').then((HttpResponse response) {
       teams = response.data;
-      print('resp ${response.data}' );
     }).catchError((e) {
       print('error $e');
     });
 
   }
-
-
-
 
   createNewRepo() {
 
@@ -60,42 +56,41 @@ class Applications {
     mod.branchConfiguration = createBranchConfig();
     mod.targetPlatforms = selectedPlatforms();
 
-    mod.nonStandardDependencies = createNonStandardDepsList();
     mod.teamId = teamId;
 
 
-    //First create the git repo. then get the url and add it.
-    mod.gitUrl = "ssh://bla.git";
+    _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
+
+      //If added to stash we also add it to selfservice database.
 
 
-    _http.post('http://${Constants.getJavaBackendUrl()}/applications', mod).then((HttpResponse response) {
+          //First create the git repo. then get the url and add it.
+          mod.gitUrl = "ssh://bla.git";
 
-      notification = 'new-application-notification-module-is-toegevoegd';
-      notificationType = 'success';
 
-    }).catchError((e) {
-      notification = 'new-application-notification-module-error';
+          _http.post('http://${Constants.getJavaBackendUrl()}/applications', mod).then((HttpResponse response) {
+
+            notification = 'new-application-notification-module-is-toegevoegd';
+            notificationType = 'success';
+
+          }).catchError((e) {
+            notification = 'new-application-notification-module-error';
+            notificationType = 'error';
+          });
+
+
+
+        }).catchError((e) {
+      if (e.toString().contains('409')) {
+        notification = 'new-application-notification-module-bestaat';
+      } else if(e.toString().contains('417')) {
+        notification = 'new-application-notification-module-repoadmin-bestaat-niet';
+      } else {
+        notification = 'new-application-notification-module-error';
+      }
+
       notificationType = 'error';
     });
-
-//    _http.post('http://$api_url/applications/', {"name":applicationName, "repoAdmin":repoAdmin}).then((HttpResponse response) {
-//
-//      //If added to stash we also add it to selfservice database.
-//
-//      notification = 'new-application-notification-module-is-toegevoegd';
-//      notificationType = 'success';
-//
-//    }).catchError((e) {
-//      if (e.toString().contains('409')) {
-//        notification = 'new-application-notification-module-bestaat';
-//      } else if(e.toString().contains('417')) {
-//        notification = 'new-application-notification-module-repoadmin-bestaat-niet';
-//      } else {
-//        notification = 'new-application-notification-module-error';
-//      }
-//
-//      notificationType = 'error';
-//    });
 
 
 
@@ -112,28 +107,6 @@ class Applications {
     return config;
   }
 
-  List createNonStandardDepsList() {
-
-    List nonStandardDependencies = new List();
-
-    nonStandardDependencies.add(createNonStandardDep("develop"));
-    nonStandardDependencies.add(createNonStandardDep("test"));
-    nonStandardDependencies.add(createNonStandardDep("acceptatie"));
-    nonStandardDependencies.add(createNonStandardDep("productie"));
-
-    return nonStandardDependencies;
-  }
-
-
-  JsonObject createNonStandardDep(String env) {
-    JsonObject dep = new JsonObject();
-    dep.environment = env;
-    dep.dependencies = new Map();
-    dep.resolutions =  new Map();
-    dep.devDependencies = new Map();
-
-    return dep;
-  }
 
   List<String> selectedPlatforms() {
     List<String> toReturn = new List<String>();

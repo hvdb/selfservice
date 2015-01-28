@@ -1,0 +1,31 @@
+<sp-notification id="statusNotification" ng-if="add.notification != null" type="add.notificationType" ><span sp-translation identifier="add.notification"></span></sp-notification>
+
+
+<div ng-if="add.notificationType != 'error'" class="container-fluid">
+
+
+    <form id="newTeam" name="newTeam" >
+
+                <label id="teamIdLabel" for="teamId" class="col-lg-4 legend-label" sp-translation identifier="'new-team-teamId-label'"></label>
+                <div class="col-lg-8">
+                    <input id="teamId" name="teamId" type="text" ng-model="add.teamId" ng-required="true" />
+
+                    <br/>
+                    <div id="emailAddressMessage" ng-if="newTeam['teamId'].hasErrorState('ng-required') && newTeam['teamId'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+                <br/>
+                <label id="teamNameLabel" for="teamName" class="col-lg-4 legend-label" sp-translation identifier="'new-team-teamName-label'"></label>
+                <div class="col-lg-8">
+                    <input id="teamName" name="teamName" type="text" ng-model="add.teamName" ng-required="true" />
+
+                    <br/>
+                    <div id="nameRequiredMessage" ng-if="newTeam['teamName'].hasErrorState('ng-required') && newTeam['teamName'].dirty" sp-translation identifier="'validation-required'"></div>
+                </div>
+                <br/>
+
+                <br/>
+                <button ng-click="details.saveTeam()"   ng-disabled="newTeam.invalid" class="btn btn-primary" sp-translation identifier="'new-team-save'"></button>
+
+    </form>
+</div>

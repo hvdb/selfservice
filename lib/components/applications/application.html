@@ -25,7 +25,7 @@
             <br/>
             <br/>
 
-            <label id="applicationDescriptionLabel" for="applicationDescription" class="col-lg-4 legend-label" sp-translation identifier="'new-application-label'"></label>
+            <label id="applicationDescriptionLabel" for="applicationDescription" class="col-lg-4 legend-label" sp-translation identifier="'new-application-description-label'"></label>
             <div class="col-lg-8">
                 <textarea id="applicationDescription" name="applicationDescription" rows="3" ng-model="applications.applicationDescription" ></textarea>
 
@@ -33,19 +33,21 @@
             <br/>
             <br/>
 
-            <label id="teamIdLabel" for="teamId" class="col-lg-4 legend-label" sp-translation identifier="'new-application-label'"></label>
+            <label id="teamIdLabel" for="teamId" class="col-lg-4 legend-label" sp-translation identifier="'new-application-team-label'"></label>
             <div class="col-lg-8">
 
 
                 <select name="teamId" id="teamId" ng-model="applications.teamId" ng-required="true">
-                    <option value="">Selecteer een team.</option>
+                    <option value="" sp-translation identifier="'new-application-select-team'"></option>
                     <option ng-repeat="t in applications.teams" ng-value="t.teamId">{{t.teamName}}</option>
                 </select>
                 <div id="teamIdRequiredMessage" ng-if="newApplicationForm['teamId'].hasErrorState('ng-required') && newApplicationForm['teamId'].dirty" sp-translation identifier="'validation-required'"></div>
 
             </div>
 
-
+            <br/>
+            <br/>
+            <div sp-translation identifier="'new-application-targetplatforms-label'" ></div>
             <div ng-repeat="platform in applications.platform">
                 <div>
                     <label>
@@ -58,13 +60,10 @@
 
 
         </div>
-<br/>
-    <br/>
-    <br/>
     <br/>
     <br/>
     <sp-notification id="formValidationMessages" ng-if="newApplicationForm.invalid && (newApplicationForm['applicationName'].dirty &&newApplicationForm['repoAdmin'].dirty &&newApplicationForm['teamId'].dirty)" type="'error'" sp-translation identifier="'validation-messages'"></sp-notification>
 
-    <input id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid"/>
+    <button id="submitButton" class="btn btn-primary" type="submit"  ng-disabled="newApplicationForm.invalid"><span sp-translation identifier="'new-application-submit-button'"></span></button>
 
 </form>

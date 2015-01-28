@@ -1,15 +1,17 @@
 <table class="table table-b" >
     <thead>
     <tr>
-        <th>name</th>
-        <th>url</th>
+        <th sp-translation identifier="'application-dependencies-name'"></th>
+        <th  sp-translation identifier="'application-dependencies-url'"></th>
+        <th  sp-translation identifier="'application-dependencies-resolution'"></th>
     </tr>
     </thead>
     <tbody>
 
     <tr ng-repeat="dependency in dependencies.deps" >
         <td>{{dependency['name']}}</td>
-        <td>{{dependency['value']}}</td>
+        <td>{{dependency['url']}}</td>
+        <td>{{dependency['resolution']}}</td>
     </tr>
     </tbody>
 </table>
